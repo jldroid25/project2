@@ -1,0 +1,79 @@
+<!-- Create the navigation bars, buttons here -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <a class="navbar-brand mx-3" href="http://localhost:4200/manager-dashboard">Manager Dashboard</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="http://localhost:4200/reimb-dashboard">View All Requests</a>
+      <a class="nav-item nav-link" href="http://localhost:4200/view-employees">View All Employees</a>
+      <a class="nav-item nav-link" href=" http://localhost:4200/resolved-reimb">Resolved Expenses</a>
+      <a class="nav-item nav-link" href=" http://localhost:4200/pending-reimb">Pending Expenses</a>
+      <a class="nav-item nav-link" href="http://localhost:4200/employee-info">Personal Data</a>
+      <a class="nav-item nav-link" href="http://localhost:4200/employee-dashboard">Employee Dashboard</a>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <button routerLink="/login" class="btn btn-danger mx-2">Logout</button>
+  </div>
+</nav>
+<nav class="navbar navbar-dark btn-primary">
+    <div class="container-fluid">
+      <h1 id="empPage">Managers Home Page </h1>
+    </div>
+</nav>
+
+<br><br>
+<div class="grid-container1">
+  <div class="grid-child" class="container-fluid   col-sm-10 col p-3  bg-primary text-white">
+    <h3>Company Mission </h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eleifend, quam at rhoncus suscipit, felis nulla volutpat leo, id lobortis urna justo ut erat. Aenean ullamcorper fringilla elit, non cursus tortor rhoncus sed. Proin aliquet pharetra turpis, at tempus lacus consectetur ac.</p>
+  </div>
+
+  <div class="grid-child2" class="container-fluid col-sm-8 col p-4 bg-dark text-white">
+    <h3>Company Information </h3>
+    <ul>
+      <li> Human Resources    : hr@thiswebsite.com</li>
+      <li>Health Benefits     : Benefits@thiswebsite.com</li>
+      <li>401K Participation  : retirement@thiswebsite.com</li>
+      <li>Reimbursements      : reimb@thiswebsite.com</li>
+    </ul>
+  </div>
+  </div>
+  <br><br>
+
+  <div class="grid-container2">
+  <div class="grid-child3" class="container-fluid col-sm-8 col p-4 bg-dark text-white">
+    <h3>Manager Personal Information </h3>
+    <ul>
+      <li>Your Personal Data : <a href="http://localhost:4200/employee-info">View/Update Info</a>  </li>
+      <span>
+        <li>Your Reimbursements : <a href="http://localhost:4200/reimb-dashboard">Expense</a>  </li>
+      </span>
+    </ul>
+  </div>
+  
+  <div class="grid-child4" class="container-fluid col-sm-8 col p-5 bg-dark text-white">
+    <h3>Manager Tasks ? </h3>
+    <ul>
+      <li> View All Employees : <a href="http://localhost:4200/employee-info">All Employees</a>  </li>
+      <li> View Specific Employee : <a href="http://localhost:4200/employee-info">Specific Employee</a>  </li>
+      <li> View All & Specific Reimbursements : <a href="http://localhost:4200/reimb-dashboard"> Expense</a>  </li>
+    </ul>
+  </div>
+  </div>
+
+  <br><br>
+  
+  <!-- Footer Section-->
+  <div class="card">
+    <div class="card-footer">
+      <div><a class="nav-item nav-link" href="#">About Us</a></div>
+      <div><a class="nav-item nav-link" href="#">Terms & Conditions</a></div>
+      <div><a class="nav-item nav-link" href="#">Contact Us</a></div>
+    </div>
+  </div>

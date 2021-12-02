@@ -1,0 +1,73 @@
+<!-- Dash Employee Board navigation  -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <a class="navbar-brand mx-3" href="http://localhost:4200/view-employees"> View Employees Homepage</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="http://localhost:4200/manager-dashboard">Manager Dashboard</a>
+      </div>
+    </div>
+    <button routerLink="/login" class="btn btn-danger mx-3">Logout</button>
+  
+  </nav>
+  <div class="container-fluid">
+    <h1 id="empPage">All Company's Employees </h1>
+  </div>
+  
+  <br><br>
+ 
+
+  <!-- Create the table-->
+  
+  <table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">Employee Id </th> 
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName </th>
+            <th scope="col">Email</th>
+            <th scope="col">AccessLEvel</th>
+        </tr>
+    </thead>
+    <tbody>
+      <!-- We need to loop "*ngFor"  in <tr> get all employeeData - 
+        for the get method  Api call-->
+        
+        <tr *ngFor="let row of employeeData">
+            <td>{{row.userId}}</td>
+            <td>{{row.firstname}}</td>
+            <td>{{row.lastname}}</td>
+            <td>{{row.email}}</td>
+            <td>{{row.accessLevel}}</td>
+            <td>
+              <!--
+              <button (click)="onEdit(row)" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">Edit</button>
+              -->
+              <!--
+              PAss the above table row to the delete method
+             -->
+             <!--
+              <button (click)=" deleteUser(row)" class="btn btn-danger mx-3">Delete</button>
+            -->
+            </td>
+        </tr>
+    </tbody>
+  </table>
+  
+  
+  <br><br>
+  
+  <!-- Footer Section-->
+  <div class="card">
+    <div class="card-footer">
+      <div><a class="nav-item nav-link" href="#">About Us</a></div>
+  
+      <div><a class="nav-item nav-link" href="#">Terms & Conditions</a></div>
+      <div><a class="nav-item nav-link" href="#">Contact Us</a></div>
+    </div>
+  </div>

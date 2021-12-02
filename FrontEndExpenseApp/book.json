@@ -1,0 +1,22 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "bookTitle": "Harry Potter and the Chamber of Secrets",
+      "bookAuthor": "J.K.Rowling",
+      "bookGenre": "Fiction",
+      "bookCost": "100",
+      "bookImage": "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=464&q=80",
+      "bookRemoved": false
+    },
+    {
+      "id": 2,
+      "bookTitle": "Harry Potter and the Goblet of Fire",
+      "bookAuthor": "J.K.Rowling",
+      "bookGenre": "Fiction",
+      "bookCost": "50",
+      "bookImage": "https://images.unsplash.com/photo-1611676279444-5577698aa13c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1974&q=80",
+      "bookRemoved": false
+    }
+  ]
+}

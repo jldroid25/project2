@@ -1,0 +1,29 @@
+.card {
+    border: none;
+    width: 500px;
+    padding: 40px;
+    position: absolute;
+    left: 50%;
+    bottom: 30%;
+    transform: translate(-50%, 50%);
+    background: rgb(47, 129, 187);
+    background: linear-gradient(90deg,  rgb(56, 152, 136) 0%,
+    hsla(295, 46%, 30%, 1) 100% );
+}
+h1, h6 , .form-text{
+    color: wheat;
+}
+.form-label  {
+    color: whitesmoke ;
+    font-weight: bolder;
+}
+.btn-primary {
+    font-weight: bolder;
+    background: linear-gradient(90deg,  rgb(56, 152, 136) 0%,
+    hsla(295, 46%, 30%, 1) 100% );
+}
+#RegLogin{
+    color: whitesmoke;
+    font-weight: bolder; 
+    padding-left: 38%;
+}

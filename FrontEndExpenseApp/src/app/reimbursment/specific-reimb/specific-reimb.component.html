@@ -1,0 +1,83 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <a class="navbar-brand mx-3" href="http://localhost:4200/specific-reimb">Your Expenses</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="http://localhost:4200/employee-dashboard">Employee Dashboard </a>
+      </div>
+    </div>
+    <div class="d-flex">
+      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add Reimbursements</button>            
+      <button routerLink="/login" class="btn btn-danger mx-2">Logout</button>
+    </div>
+  </nav>
+  
+  <!-- Create the navigation bars, buttons here -->
+  <nav class="navbar navbar-dark btn-primary">
+      <div class="container-fluid">
+          <h1 id="empPage">Your Reimbursements Requests History </h1>
+      </div>
+  </nav>
+  <!-- Create the table-->
+  <table class="table mt-3">
+      <thead>
+          <tr>
+              <th scope="col">Expense Id </th> 
+              <th scope="col">Expense Date</th>
+              <th scope="col">Expense Reason </th>
+              <th scope="col">Amount</th>
+              <th scope="col">Status </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let reimbusementObj of allReimbursements">
+            <td>{{reimbusementObj.reimbId}}</td>
+            <td>{{reimbusementObj.reimbDate | date}}</td>
+            <td>{{reimbusementObj.reimbReason}}</td>
+            <td>{{reimbusementObj.reimbAmount}}</td>
+            <td>{{reimbusementObj.reimbStatus}}</td>
+            <td>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+
+  <!-- Modal to add Employee data -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+      
+        <div class="modal-body">
+
+          <form [formGroup] = "formValue">
+              <div class="mb-3">
+                  <label for="reimb_reason" class="form-label">Expense Reason</label>
+                  <input type="text" formControlName="reimb_reason" class="form-control" id="InputReimbReason" aria-describedby="reimbReasonHelp">
+                </div>
+  
+                <div class="mb-3">
+                  <label for="reimb_amount" class="form-label">Amount Requested</label>
+                  <input type="text" formControlName="reimb_amount" class="form-control" id="InputReimbAmount " aria-describedby="reimbAmountHelp">
+                </div>
+
+                <div class="mb-3">
+                  <label for="reimb_status" class="form-label">Status</label>
+                  <input type="text" formControlName="reimb_status" class="form-control" id="InputReimbStatus" aria-describedby="reimbStatusHelp">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" (click)="addReimbursement()" class="btn btn-primary">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>

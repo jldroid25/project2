@@ -1,0 +1,83 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <a class="navbar-brand mx-3" href="http://localhost:4200/reimb-dashboard">Reimbursements Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="http://localhost:4200/manager-dashboard">Manager DashBoard </a>
+    </div>   
+  </div>
+  <div class="d-flex">
+    <button routerLink="/login" class="btn btn-danger mx-2">Logout</button>
+  </div>
+</nav>
+
+<!-- Create the navigation bars, buttons here -->
+<nav class="navbar navbar-dark btn-primary">
+    <div class="container-fluid">
+        <h1 id="empPage"> All Reimbursements Requests </h1>
+  
+    </div>
+</nav>
+<!-- Create the table-->
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">Expense Id </th>
+            <th scope="col">Expense Date</th>
+            <th scope="col">Expense Reason </th>
+            <th scope="col">Amount</th>
+            <th scope="col">Status </th>
+        </tr>
+    </thead>
+    <tbody>
+      <!--- We need to loop "*ngFor"  in <tr> get all employeeData - 
+        for the get method  Api call-->
+        <tr *ngFor="let row of allReimbursements">
+            <td>{{row.reimbId}}</td>
+            <td>{{row.reimbDate | date}}</td>
+            <td>{{row.reimbReason}}</td>
+            <td>{{row.reimbAmount}}</td>
+            <td>{{row.reimbStatus}}</td>
+            <td>
+                <button *ngIf="row.reimbStatus == 'Pending'" (click)="onEditRow(row)" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">Edit</button>
+                <!-- PAss the above table row to the delete method-->
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <form [formGroup] = "formValue">
+
+              <div class="mb-3">
+                <label for="reimb_status" class="form-label">Status</label>
+                <!--
+                <input type="text" formControlName="reimb_status" class="form-control" id="InputReimbStatus" aria-describedby="reimbStatusHelp">
+                -->
+                <select formControlName="reimb_status" class="form-control" id="InputReimbStatus" aria-describedby="reimbStatusHelp"> 
+                  <option>Pending</option>
+                  <option>Approved</option>
+                  <option>Denied</option>
+                </select>
+              </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" (click)="updateReimbursementDetails()" class="btn btn-primary">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
