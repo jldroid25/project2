@@ -31,6 +31,8 @@
               <th scope="col">Expense Reason </th>
               <th scope="col">Amount</th>
               <th scope="col">Status </th>
+              <th scope="col">User Id </th>
+
           </tr>
       </thead>
       <tbody>
@@ -38,8 +40,9 @@
             <td>{{reimbusementObj.reimbId}}</td>
             <td>{{reimbusementObj.reimbDate | date}}</td>
             <td>{{reimbusementObj.reimbReason}}</td>
-            <td>{{reimbusementObj.reimbAmount}}</td>
+            <td>{{reimbusementObj.reimbAmount | currency }}</td>
             <td>{{reimbusementObj.reimbStatus}}</td>
+            <td>{{reimbusementObj.userId}}</td>
             <td>
               </td>
           </tr>
@@ -67,11 +70,7 @@
                   <label for="reimb_amount" class="form-label">Amount Requested</label>
                   <input type="text" formControlName="reimb_amount" class="form-control" id="InputReimbAmount " aria-describedby="reimbAmountHelp">
                 </div>
-
-                <div class="mb-3">
-                  <label for="reimb_status" class="form-label">Status</label>
-                  <input type="text" formControlName="reimb_status" class="form-control" id="InputReimbStatus" aria-describedby="reimbStatusHelp">
-                </div>
+             
             </form>
         </div>
         <div class="modal-footer">

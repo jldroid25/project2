@@ -24,7 +24,8 @@ export class ReimbursmentDashboardComponent implements OnInit {
    reimbReason  : " ",
    reimbAmount  : 0,
    reimbStatus  : " ",
-   reimbRemoved : false
+   reimbRemoved : false,
+   userId       : 0
   }
 
   constructor(private reimbusementService : ReimbursService, 
@@ -35,12 +36,7 @@ export class ReimbursmentDashboardComponent implements OnInit {
     
     //for the modal input type form value
     this.formValue = this.formbuilder.group({
-      //reimb_date   : [''],
-      //reimbId : ['']
-      reimb_amount : [''],
-      reimb_reason : [''],
-      reimb_status : ['Pending']
-
+      reimb_status : ['']
     })
     
     //TO load all reimbursement on page load
@@ -82,12 +78,13 @@ export class ReimbursmentDashboardComponent implements OnInit {
         console.log(error);
       })
       //for testing
-    alert("added Successfully");
+    //alert("added Successfully");
+    
     //Close the Form Automatically
     let ref = document.getElementById("cancel");
     ref?.click();
     this.formValue.reset();
-    //this.router.navigate(['reimb-update'])
+    this.router.navigate(['reimb-dashboard'])
     //Reload the page 
     this.loadReimbursements();
   }
@@ -97,24 +94,21 @@ export class ReimbursmentDashboardComponent implements OnInit {
    this.newReimbursement.reimbId = row.reimbId;
    //SLQ set up to only allow status to be updated by mng
    this.formValue.controls["reimb_status"].setValue(row.reimb_status);
-   //this.formValue.controls['reimb_amount'].setValue(row.reimbAmount);
    //add more when needed
   }
 
   updateReimbursementDetails(){
-
-    //this.reimbusementObj.reimbDate = this.formValue.value.reimb_date;
-    //this.reimbusementObj.reimbId = this.formValue.value.reimbId;
     this.reimbusementObj.reimbStatus = this.formValue.value.reimb_status;
-    //this.reimbusementObj.reimbAmount = this.formValue.value.reimb_amount;
     //add more later if needed
     
     //call our update api method , pass it the object &  reimb id
     this.reimbusementService.updateReimbursementService(this.newReimbursement)
-    .subscribe((res: any) => {
-
+    .subscribe(
+      (response) => {
+        console.log(response);
+        //To Reload the page after the update is done
+        this.router.navigate(['reimb-dashboard']);
       alert("updated Successfully");
-      
       //close the form automatically when done updating
     let ref = document.getElementById("cancel");
     ref?.click();
@@ -122,12 +116,6 @@ export class ReimbursmentDashboardComponent implements OnInit {
     //Reload the page 
     this.loadReimbursements();
   })
-  }
-
-  // navigate to Edit/Update Component form
-  navToEditComponent(rb_id : any) {
-    console.log("logged : " + rb_id);
-    this.router.navigate(['reimb-update', rb_id])
   }
 
 }//

@@ -30,6 +30,8 @@
               <th scope="col">Expense Reason </th>
               <th scope="col">Amount</th>
               <th scope="col">Status </th>
+              <th scope="col">USer Id </th>
+
           </tr>
       </thead>
       <tbody>
@@ -39,8 +41,10 @@
             <td>{{reimbusementObj.reimbId}}</td>
             <td>{{reimbusementObj.reimbDate | date}}</td>
             <td>{{reimbusementObj.reimbReason}}</td>
-            <td>{{reimbusementObj.reimbAmount}}</td>
+            <td>{{reimbusementObj.reimbAmount | currency}}</td>
             <td>{{reimbusementObj.reimbStatus}}</td>
+            <td>{{reimbusementObj.userId}}</td>
+
             <td>
               <!-- Pass the above table row to the delete method
               <button (click)=" removeReimbursement(row.reimbId)" class="btn btn-danger mx-3">Delete</button>

@@ -19,7 +19,6 @@
 <nav class="navbar navbar-dark btn-primary">
     <div class="container-fluid">
         <h1 id="empPage"> All Reimbursements Requests </h1>
-  
     </div>
 </nav>
 <!-- Create the table-->
@@ -31,17 +30,19 @@
             <th scope="col">Expense Reason </th>
             <th scope="col">Amount</th>
             <th scope="col">Status </th>
+            <th scope="col">User Id </th>
         </tr>
     </thead>
     <tbody>
-      <!--- We need to loop "*ngFor"  in <tr> get all employeeData - 
+      <!--- We need to loop "*ngFor"  in <tr> get all reimbursementData - 
         for the get method  Api call-->
         <tr *ngFor="let row of allReimbursements">
             <td>{{row.reimbId}}</td>
             <td>{{row.reimbDate | date}}</td>
             <td>{{row.reimbReason}}</td>
-            <td>{{row.reimbAmount}}</td>
+            <td>{{row.reimbAmount | currency}}</td>
             <td>{{row.reimbStatus}}</td>
+            <td>{{row.userId}}</td>
             <td>
                 <button *ngIf="row.reimbStatus == 'Pending'" (click)="onEditRow(row)" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">Edit</button>
                 <!-- PAss the above table row to the delete method-->
@@ -54,7 +55,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Reimbursements Details</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -63,11 +64,9 @@
 
               <div class="mb-3">
                 <label for="reimb_status" class="form-label">Status</label>
-                <!--
-                <input type="text" formControlName="reimb_status" class="form-control" id="InputReimbStatus" aria-describedby="reimbStatusHelp">
-                -->
-                <select formControlName="reimb_status" class="form-control" id="InputReimbStatus" aria-describedby="reimbStatusHelp"> 
-                  <option>Pending</option>
+                  <!--Temporarily using ngModel on the Reactive form to fix update bug -->
+                  <!-- FYI NgModel on Reactive form is deprecated-->
+                  <select type="reimb_status" formControlName="reimb_status"[(ngModel)]="newReimbursement.reimbStatus" class="form-control"> 
                   <option>Approved</option>
                   <option>Denied</option>
                 </select>

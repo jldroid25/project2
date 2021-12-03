@@ -5,4 +5,5 @@ export class Reimbursement {
    reimbAmount  : number = 0;
    reimbStatus  : string = '';
    reimbRemoved : boolean = false;
+   userId       : number = 0
 }

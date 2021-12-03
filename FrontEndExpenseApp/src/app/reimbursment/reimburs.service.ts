@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Reimbursement} from './reimbursement.model';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import { Reimbursement} from './reimbursement.model';
 
 export class ReimbursService {
 
-  reimbUrl = " http://localhost:4041/api/reimbursements";
+  reimbUrl = "http://localhost:4041/api/reimbursements";
 
   constructor(private http: HttpClient) { }
 
@@ -34,7 +35,7 @@ export class ReimbursService {
    updateReimbursementService(updateReimb : Reimbursement) : Observable<Reimbursement>{
     return this.http.put<Reimbursement>(this.reimbUrl+"/"+updateReimb.reimbId, updateReimb);
   }
-
+  
   //create a new endpoint that take a user_id & return all
   // reimbursement for that user_id.
   getASpecificUserReimbursementService(user_id : number): Observable<Reimbursement> {

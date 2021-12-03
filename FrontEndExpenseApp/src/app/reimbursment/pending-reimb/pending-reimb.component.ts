@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router } from '@angular/router';
 import { ReimbursService } from '../reimburs.service';
 import { Reimbursement } from '../reimbursement.model';
+import { AuthCredService } from '../../user-credentials/auth-cred.service';
+
 
 @Component({
   selector: 'app-pending-reimb',
@@ -19,10 +21,12 @@ export class PendingReimbComponent implements OnInit {
    reimbReason  : " ",
    reimbAmount  : 0,
    reimbStatus  : " ",
-   reimbRemoved : false
+   reimbRemoved : false,
+   userId       : this.authCredService.retrieveUserId()
   }
 
-  constructor(private reimbusementService : ReimbursService, 
+  constructor(private reimbusementService : ReimbursService,
+    private authCredService: AuthCredService, 
     private router: Router) { }
 
   ngOnInit(): void {

@@ -26,6 +26,7 @@ export class SpecificReimbComponent implements OnInit {
     reimbAmount  : 0,
     reimbStatus  : " ",
     reimbRemoved : false,
+    userId       : this.authCredService.retrieveUserId()
    }
   
    constructor(private reimbusementService : ReimbursService, 
@@ -37,11 +38,13 @@ export class SpecificReimbComponent implements OnInit {
     
      //for the modal input type form value
      this.formValue = this.formbuilder.group({
-      reimb_amount : [''],
       reimb_reason : [''],
-      reimb_status : ['Pending']
+      reimb_amount : ['']
     })
+    //For loading the page after a reimbursement was added.
+    this.loadThisUSerReimbersements(this.reimbusementObj.userId);
     
+    //For getting the userId & send it to the reimb_info table user_id column
     this.loadThisUSerReimbersements(this.authCredService.retrieveUserId());
   }
 
@@ -50,7 +53,6 @@ export class SpecificReimbComponent implements OnInit {
     //connect to the function in service layer
    this.reimbusementService.getASpecificUserReimbursementService(this.authCredService.retrieveUserId())
    .subscribe((response: any)=> {
-    console.log("James' testing");
     console.log(response);
      this.allReimbursements = response;
    }, (error: any)=>{
@@ -68,13 +70,14 @@ export class SpecificReimbComponent implements OnInit {
 
   // to Add a reimbursement
   addReimbursement(){
+    //add more fields later if needed
     this.newReimbursement.reimbReason = this.formValue.value.reimb_reason;
     this.newReimbursement.reimbAmount = this.formValue.value.reimb_amount;
-    //add more later if needed
      // Let's post the data through the post request in service
     this.reimbusementService.addReimbursementService(this.newReimbursement).subscribe(
       (response: any) => {
-        //this.loadReimbursements();
+        // To reload the page with new user Reimbursement just added
+        this.loadThisUSerReimbersements(this.reimbusementObj.userId);
       },
       (error: any) => {
         console.log(error);
@@ -86,6 +89,7 @@ export class SpecificReimbComponent implements OnInit {
   }
 
   /*
+  // Don't delete - We might need to use it
   updateReimbursementDetails(){
     this.reimbusementObj.reimbStatus = this.formValue.value.reimb_status;
     //add more later if needed
@@ -100,5 +104,4 @@ export class SpecificReimbComponent implements OnInit {
   })
   }
   */
-
 }//class

@@ -10,13 +10,14 @@ public class ReimbursementPojo {
 	private float reimbAmount;
 	private String reimbStatus;
 	boolean reimbRemoved;
+	private int userId; 
 
 	public ReimbursementPojo() {
 		super();
 	}
 
 	public ReimbursementPojo(int reimbId, Date reimbDate, String reimbReason, float reimbAmount, String reimbStatus,
-			boolean reimbRemoved) {
+			boolean reimbRemoved, int userId) {
 		super();
 		this.reimbId = reimbId;
 		this.reimbDate = reimbDate;
@@ -24,6 +25,7 @@ public class ReimbursementPojo {
 		this.reimbAmount = reimbAmount;
 		this.reimbStatus = reimbStatus;
 		this.reimbRemoved = reimbRemoved;
+		this.userId = userId;
 	}
 
 	public int getReimbId() {
@@ -74,11 +76,22 @@ public class ReimbursementPojo {
 		this.reimbRemoved = reimbRemoved;
 	}
 
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "ReimbursementPojo [reimbId=" + reimbId + ", reimbDate=" + reimbDate + ", reimbReason=" + reimbReason
 				+ ", reimbAmount=" + reimbAmount + ", reimbStatus=" + reimbStatus + ", reimbRemoved=" + reimbRemoved
-				+ "]";
+				+ ", userId=" + userId + "]";
 	}
+	
 
+	
 }

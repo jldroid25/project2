@@ -22,6 +22,7 @@ export class ReimbResolvedEmplComponent implements OnInit {
     reimbAmount  : 0,
     reimbStatus  : " ",
     reimbRemoved : false,
+    userId       : 0,
    }
   
    constructor(private reimbusementService : ReimbursService, 

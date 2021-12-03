@@ -28,10 +28,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		Connection connection = DbUtil.makeConnection();
 		try {
 			Statement statement = connection.createStatement();
-			String query = "insert into reimb_info(rb_reason, rb_amount, rb_status, reimb_removed, user_id)" + " values(  '"
-					+ reimbursementPojo.getReimbReason() + "', '" + reimbursementPojo.getReimbAmount() + "',  " + " '"
-					+ reimbursementPojo.getReimbStatus() + "', " + reimbursementPojo.isReimbRemoved()
-					+ ") returning  rb_id";
+			String query = "insert into reimb_info(rb_reason, rb_amount, rb_status, user_id, reimb_removed)" + " values('"
+					+ reimbursementPojo.getReimbReason() + "',  '" + reimbursementPojo.getReimbAmount() + "',  '"
+					+ reimbursementPojo.getReimbStatus() + "', '"  + reimbursementPojo.getUserId() +  "',   " + reimbursementPojo.isReimbRemoved() +  " ) returning  rb_id";
 
 			ResultSet rs = statement.executeQuery(query);
 			rs.next();
@@ -52,8 +51,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 
 		try {
 			Statement statement = connection.createStatement();
+			
 
-			String query = "update reimb_info  set rb_status= ' " +reimbursementPojo.getReimbStatus()+" '  where rb_id= "+reimbursementPojo.getReimbId();
+			String query = "update reimb_info  set  rb_status= ' " +reimbursementPojo.getReimbStatus()+" '  where rb_id= "+reimbursementPojo.getReimbId();
 
 			int rowsAffected = statement.executeUpdate(query);
 
@@ -92,12 +92,10 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			statement = connection.createStatement();
 			String query = "SELECT * FROM reimb_info where rb_id=" + reimbursementId + "AND reimb_removed=false";
 
-			// String query = "SELECT * FROM reimb_info where rb_id=" + reimbursementId +
-			// "AND user_id=" +userInformationPojo .getUserId() + "AND reimb_removed=false";
 			ResultSet rs = statement.executeQuery(query);
 			if (rs.next()) {
 				reimbursementPojo = new ReimbursementPojo(rs.getInt(1), rs.getDate(2), rs.getString(3), rs.getFloat(4),
-						rs.getString(5), rs.getBoolean(6));
+						rs.getString(5), rs.getBoolean(6), rs.getInt(7));
 			}
 		} catch (SQLException e) {
 			// Throw the application lException because we don't want JDBC exception
@@ -126,7 +124,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			while (rs.next()) {
 
 				ReimbursementPojo reimbursementPojo = new ReimbursementPojo(rs.getInt(1),
-						new Date(rs.getDate(2).getTime()),rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getBoolean(6));
+						new Date(rs.getDate(2).getTime()),rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getBoolean(6), rs.getInt(7));
 				allReimbursements.add(reimbursementPojo);
 
 			}
@@ -161,7 +159,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			while (rs.next()) {
 
 				ReimbursementPojo reimbursementPojo = new ReimbursementPojo(rs.getInt(1),
-						new Date(rs.getDate(2).getTime()),rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getBoolean(6));
+						new Date(rs.getDate(2).getTime()),rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getBoolean(6), rs.getInt(7));
 				userReimbs.add(reimbursementPojo);
 			}
 
@@ -187,18 +185,14 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		try {
 			statement = connection.createStatement();
 			
-			
-			//String query = "select * from reimb_info where user_id="+userId+" and rb_status='Pending' ";
 			String query = "SELECT * from reimb_info  WHERE reimb_removed=false  and user_id="+userId+" and  rb_status='Pending' ";
-
-
 			
 			ResultSet rs = statement.executeQuery(query);
 			
 			while (rs.next()) {
 
 				ReimbursementPojo reimbursementPojo = new ReimbursementPojo(rs.getInt(1),
-						new Date(rs.getDate(2).getTime()),rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getBoolean(6));
+						new Date(rs.getDate(2).getTime()),rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getBoolean(6), rs.getInt(7));
 				userReimbs.add(reimbursementPojo);
 			}
 
@@ -229,7 +223,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			while (rs.next()) {
 
 				ReimbursementPojo reimbursementPojo = new ReimbursementPojo(rs.getInt(1),
-						new Date(rs.getDate(2).getTime()),rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getBoolean(6));
+						new Date(rs.getDate(2).getTime()),rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getBoolean(6), rs.getInt(7));
 				userReimbs.add(reimbursementPojo);
 			}
 
@@ -257,13 +251,15 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			String query = " select * from  reimb_info  where reimb_removed=false and  rb_status='Approved' or rb_status='Denied' ";
 			
 			ResultSet rs = statement.executeQuery(query);
+		
 			
 			while (rs.next()) {
 
 				ReimbursementPojo reimbursementPojo = new ReimbursementPojo(rs.getInt(1),
-						new Date(rs.getDate(2).getTime()),rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getBoolean(6));
+						new Date(rs.getDate(2).getTime()),rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getBoolean(6), rs.getInt(7));
 				userReimbs.add(reimbursementPojo);
 			}
+			
 
 		}catch (SQLException e) {
 			throw new ApplicationException(e.getMessage());
@@ -292,7 +288,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			while (rs.next()) {
 
 				ReimbursementPojo reimbursementPojo = new ReimbursementPojo(rs.getInt(1),
-						new Date(rs.getDate(2).getTime()),rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getBoolean(6));
+						new Date(rs.getDate(2).getTime()),rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getBoolean(6), rs.getInt(7));
 				userReimbs.add(reimbursementPojo);
 			}
 

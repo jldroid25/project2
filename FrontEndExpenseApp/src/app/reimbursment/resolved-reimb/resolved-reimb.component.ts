@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router } from '@angular/router';
 import { ReimbursService } from '../reimburs.service';
 import { Reimbursement } from '../reimbursement.model';
+import { AuthCredService } from '../../user-credentials/auth-cred.service';
+
 
 
 @Component({
@@ -21,10 +23,12 @@ export class ResolvedReimbComponent implements OnInit {
    reimbReason  : " ",
    reimbAmount  : 0,
    reimbStatus  : " ",
-   reimbRemoved : false
+   reimbRemoved : false,
+   userId       : this.authCredService.retrieveUserId()
   }
 
   constructor(private reimbusementService : ReimbursService, 
+    private authCredService: AuthCredService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -33,6 +37,8 @@ export class ResolvedReimbComponent implements OnInit {
   loadResolvedReimbursements(){
     this.reimbusementService.getResolvedReimbursementService()
     .subscribe((response)=>{
+      console.log("James Testing")
+      console.log(response);
       this.allReimbursements = response;
     }, 
     (error)=> {
@@ -40,5 +46,4 @@ export class ResolvedReimbComponent implements OnInit {
       console.log(this.errorReimbMsg);
     });
   }
-
 }

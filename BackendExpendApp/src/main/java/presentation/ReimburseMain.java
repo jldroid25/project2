@@ -125,12 +125,15 @@ public class ReimburseMain {
 		app.delete("api/registerusers/{uid}", (ctx) -> {
 			authUserService.deleteUser(Integer.parseInt(ctx.pathParam("uid")));
 		});
+		
+		/*
 
 		app.exception(ApplicationException.class, (ae, ctx) -> {
 			ErrorPojo error = new ErrorPojo();
 			error.setErrorMessage(ae.getMessage());
 			ctx.json(error).status(500);
 		});
+		*/
 
 	}// main
 

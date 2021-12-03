@@ -22,6 +22,7 @@ export class ReimbPendingEmplComponent implements OnInit {
     reimbAmount  : 0,
     reimbStatus  : " ",
     reimbRemoved : false,
+    userId       : this.authCredService.retrieveUserId()
    }
   
    constructor(private reimbusementService : ReimbursService, 
