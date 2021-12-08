@@ -9,3 +9,5 @@ Jamal is on backend testing & James is on Backend & managing the team for the up
 
 Devops Section : 
 Project 2 is successfully under Continuous Integration C.I with Jenkins & Github.
+This is the First part of DEVOPS CI , 
+next we will do Continuos Delivery 
