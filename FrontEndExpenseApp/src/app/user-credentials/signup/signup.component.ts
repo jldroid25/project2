@@ -31,7 +31,7 @@ export class SignupComponent implements OnInit {
   //the signUp method
   signUp() {
     //Make a post http call to store thevalue
-    this.http.post<any>("http://localhost:4041/api/registerusers", this.signupForm.value)
+    this.http.post<any>("http://localhost:7777/api/users", this.signupForm.value)
       .subscribe((res: any) => {
         //for testing remove later
         this.signupForm.reset();

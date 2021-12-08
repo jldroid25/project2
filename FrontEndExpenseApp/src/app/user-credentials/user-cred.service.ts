@@ -20,7 +20,7 @@ export class UserCredService {
      
   //HTTP  post method
   postUser(data : UserCred ){
-    return this.http.post<UserCred >("http://localhost:4041/api/registerusers", data)
+    return this.http.post<UserCred >("http://localhost:7777/api/users", data)
     // map it to the HttpClient call on line #4
     .pipe(map( (res: UserCred) =>{
       return res;
@@ -28,7 +28,7 @@ export class UserCredService {
   }
     //HTTP get method
   getUser(){
-    return this.http.get<UserCred >("http://localhost:4041/api/registerusers")
+    return this.http.get<UserCred >("http://localhost:7777/api/users")
     .pipe(map((res:UserCred)=>{
       return res;
     }))
@@ -36,31 +36,22 @@ export class UserCredService {
 
    //HTTP  Put/update method
    updateUser(data : UserCred ,userId: number){
-    return this.http.put<UserCred>("http://localhost:4041/api/registerusers/"+userId,data)
+    return this.http.put<UserCred>("http://localhost:7777/api/users/"+userId,data)
     .pipe(map((res:UserCred)=>{
       return res;
     }))
   }
 
-  /*
-  //HTTP  delete method
-  deleteUser(userId : number){
-    return this.http.delete<UserCred>("http://localhost:4041/api/registerusers/"+userId)
-    .pipe(map((res:UserCred)=>{
-      return res;
-    }))
-  }
-  */
  //HTTP  delete method
  deleteUser(userId : number) : Observable<UserCred>{
-  return this.http.delete<UserCred>("http://localhost:4041/api/registerusers/"+userId);
+  return this.http.delete<UserCred>("http://localhost:7777/api/users/"+userId);
 }
 
 getAUserService(userId: number): Observable<UserCred>{
-  return this.http.get<UserCred>("http://localhost:4041/api/registerusers/"+userId);
+  return this.http.get<UserCred>("http://localhost:7777/api/users/"+userId);
 }
   validateUser(user : UserCred) {
-    this.http.get<any>("http://localhost:4041/api/registerusers")
+    this.http.get<any>("http://localhost:7777/api/users")
   .subscribe((res: any[])=>{
     // using find() array method to find, &
     // store the matching user email & password

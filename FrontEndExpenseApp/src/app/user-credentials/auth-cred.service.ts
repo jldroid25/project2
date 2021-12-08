@@ -44,33 +44,5 @@ export class AuthCredService {
         return user.userId;
       }
 
-      /* not needed
-    //---------- Reimbursement SessionStorages
-     //A method to store the user session
-     storeReimb(reimb: Reimbursement  ){
-      sessionStorage.setItem("userData", JSON.stringify(reimb));
-    }
-  
-    //call this line in any components
-    // retrieve user info we store above in storeUser()
-    retrieveReimb(): Reimbursement {
-      var data: any = sessionStorage.getItem("userData");
-       return JSON.parse(data == null?'': data);
-    }
-  
-    //All Removed your session afterwards
-    removeReimb(){
-      sessionStorage.removeItem("userData");
-    }
-
-    //For Reteiving your session later
-    retrieveReimbId(){
-      var data: any = sessionStorage.getItem("userData");
-      var reimb: Reimbursement  = JSON.parse(data == null?'': data);
-      return reimb.reimbId;
-    }
-    */
-    
-  
   constructor() { }
 }

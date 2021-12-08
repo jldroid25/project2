@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   }
   //Login the user to the site
   login() {
-    this.http.get<any>("http://localhost:4041/api/registerusers/")
+    this.http.get<any>("http://localhost:7777/api/users/")
       .subscribe((res: any[]) => {
         // using find() array method to find, &
         // store the matching user email & password
