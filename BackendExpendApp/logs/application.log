@@ -10063,3 +10063,91 @@
 [INFO ] 2021-12-02 14:41:52.207 [qtp505021446-20] UserDaoImpl -Entered  retrieveAllUsers() is located in dao.
 [INFO ] 2021-12-02 14:41:52.209 [qtp505021446-20] UserDaoImpl -Left  retrieveAllUsers() is located in dao.
 [INFO ] 2021-12-02 14:41:52.209 [qtp505021446-20] UserServiceImpl -Left  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:06:55.176 [qtp229995302-20] UserServiceImpl -Entered registerUserService() located in service Layer
+[INFO ] 2021-12-02 15:06:55.191 [qtp229995302-20] UserDaoImpl -Entered registerUser() is located in dao.
+[INFO ] 2021-12-02 15:06:55.501 [qtp229995302-20] UserDaoImpl -Left registerUser() is located in dao.
+[INFO ] 2021-12-02 15:06:55.502 [qtp229995302-20] UserServiceImpl -Left registerUserService() located in service Layer
+[INFO ] 2021-12-02 15:07:40.387 [qtp229995302-16] UserServiceImpl -Entered  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:07:40.388 [qtp229995302-16] UserDaoImpl -Entered  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 15:07:40.394 [qtp229995302-16] UserDaoImpl -Left  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 15:07:40.394 [qtp229995302-16] UserServiceImpl -Left  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:07:42.091 [qtp229995302-21] UserServiceImpl -Entered  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:07:42.092 [qtp229995302-21] UserDaoImpl -Entered  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 15:07:42.110 [qtp229995302-21] UserDaoImpl -Left  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 15:07:42.110 [qtp229995302-21] UserServiceImpl -Left  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:11:26.996 [qtp229995302-20] ReimbursementServiceImpl -Entered retrieveAllReimbursementService() located in service Layer
+[INFO ] 2021-12-02 15:11:27.011 [qtp229995302-20] ReimbursementDaoImpl -Entered retrieveAllReimbursements() located  in dao.
+[INFO ] 2021-12-02 15:11:27.020 [qtp229995302-20] ReimbursementDaoImpl -Left retrieveAllReimbursements() located  in dao.
+[INFO ] 2021-12-02 15:11:27.020 [qtp229995302-20] ReimbursementServiceImpl -Left retrieveAllReimbursementService()  located in service Layer
+[INFO ] 2021-12-02 15:11:30.231 [qtp229995302-19] UserServiceImpl -Entered  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:11:30.232 [qtp229995302-19] UserDaoImpl -Entered  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 15:11:30.234 [qtp229995302-19] UserDaoImpl -Left  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 15:11:30.234 [qtp229995302-19] UserServiceImpl -Left  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:13:46.849 [qtp229995302-22] UserServiceImpl -Entered registerUserService() located in service Layer
+[INFO ] 2021-12-02 15:13:46.849 [qtp229995302-22] UserDaoImpl -Entered registerUser() is located in dao.
+[INFO ] 2021-12-02 15:13:46.851 [qtp229995302-22] UserDaoImpl -Left registerUser() is located in dao.
+[INFO ] 2021-12-02 15:13:46.852 [qtp229995302-22] UserServiceImpl -Left registerUserService() located in service Layer
+[INFO ] 2021-12-02 15:13:52.217 [qtp229995302-20] UserServiceImpl -Entered  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:13:52.217 [qtp229995302-20] UserDaoImpl -Entered  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 15:13:52.219 [qtp229995302-20] UserDaoImpl -Left  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 15:13:52.219 [qtp229995302-20] UserServiceImpl -Left  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:13:53.655 [qtp229995302-22] UserServiceImpl -Entered  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:13:53.655 [qtp229995302-22] UserDaoImpl -Entered  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 15:13:53.669 [qtp229995302-22] UserDaoImpl -Left  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 15:13:53.670 [qtp229995302-22] UserServiceImpl -Left  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:14:18.605 [qtp229995302-20] ReimbursementServiceImpl -Entered getAUserReimbursementService() located in service Layer
+[INFO ] 2021-12-02 15:14:18.613 [qtp229995302-20] ReimbursementDaoImpl -Entered getAUserReimbursement() located  in dao.
+[INFO ] 2021-12-02 15:14:21.217 [qtp229995302-22] UserServiceImpl -Entered  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:14:21.218 [qtp229995302-22] UserDaoImpl -Entered  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 15:14:21.220 [qtp229995302-22] UserDaoImpl -Left  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 15:14:21.220 [qtp229995302-22] UserServiceImpl -Left  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:14:23.752 [qtp229995302-20] ReimbursementServiceImpl -Entered getAUserReimbursementService() located in service Layer
+[INFO ] 2021-12-02 15:14:23.753 [qtp229995302-20] ReimbursementDaoImpl -Entered getAUserReimbursement() located  in dao.
+[INFO ] 2021-12-02 15:14:39.986 [qtp229995302-20] ReimbursementServiceImpl -Entered createReimbursementService() located in service Layer
+[INFO ] 2021-12-02 15:14:39.986 [qtp229995302-20] ReimbursementDaoImpl -Entered createReimbursment() is located in dao.
+[INFO ] 2021-12-02 15:37:29.705 [qtp229995302-21] UserServiceImpl -Entered  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:37:29.714 [qtp229995302-21] UserDaoImpl -Entered  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 15:37:29.825 [qtp229995302-21] UserDaoImpl -Left  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 15:37:29.826 [qtp229995302-21] UserServiceImpl -Left  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:37:32.079 [qtp229995302-17] UserServiceImpl -Entered  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:37:32.079 [qtp229995302-17] UserDaoImpl -Entered  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 15:37:32.091 [qtp229995302-17] UserDaoImpl -Left  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 15:37:32.092 [qtp229995302-17] UserServiceImpl -Left  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:37:35.488 [qtp229995302-20] ReimbursementServiceImpl -Entered getAUserPendingReimbursementService() located in service Layer
+[INFO ] 2021-12-02 15:37:35.489 [qtp229995302-20] ReimbursementDaoImpl -Entered getAUserPendingReimbursement() located  in dao.
+[INFO ] 2021-12-02 15:37:35.501 [qtp229995302-20] ReimbursementDaoImpl -Left getAUserPendingReimbursement() located  in dao.
+[INFO ] 2021-12-02 15:37:35.501 [qtp229995302-20] ReimbursementServiceImpl -Left getAUserPendingReimbursementService() located in service Layer
+[INFO ] 2021-12-02 15:37:37.731 [qtp229995302-22] UserServiceImpl -Entered  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:37:37.739 [qtp229995302-22] UserDaoImpl -Entered  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 15:37:37.742 [qtp229995302-22] UserDaoImpl -Left  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 15:37:37.742 [qtp229995302-22] UserServiceImpl -Left  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 15:37:38.884 [qtp229995302-20] ReimbursementServiceImpl -Entered getAUserReimbursementService() located in service Layer
+[INFO ] 2021-12-02 15:37:38.884 [qtp229995302-20] ReimbursementDaoImpl -Entered getAUserReimbursement() located  in dao.
+[INFO ] 2021-12-02 15:37:38.886 [qtp229995302-20] ReimbursementDaoImpl -Left getAUserReimbursement() located  in dao.
+[INFO ] 2021-12-02 15:37:38.886 [qtp229995302-20] ReimbursementServiceImpl -Left getAUserReimbursementService() located in service Layer
+[INFO ] 2021-12-02 15:37:51.533 [qtp229995302-20] ReimbursementServiceImpl -Entered createReimbursementService() located in service Layer
+[INFO ] 2021-12-02 15:37:51.533 [qtp229995302-20] ReimbursementDaoImpl -Entered createReimbursment() is located in dao.
+[INFO ] 2021-12-02 15:38:58.317 [qtp229995302-16] ReimbursementServiceImpl -Entered createReimbursementService() located in service Layer
+[INFO ] 2021-12-02 15:38:58.318 [qtp229995302-16] ReimbursementDaoImpl -Entered createReimbursment() is located in dao.
+[INFO ] 2021-12-02 16:37:19.803 [qtp229995302-20] ReimbursementServiceImpl -Entered getAUserReimbursementService() located in service Layer
+[INFO ] 2021-12-02 16:37:19.804 [qtp229995302-20] ReimbursementDaoImpl -Entered getAUserReimbursement() located  in dao.
+[INFO ] 2021-12-02 16:37:19.810 [qtp229995302-20] ReimbursementDaoImpl -Left getAUserReimbursement() located  in dao.
+[INFO ] 2021-12-02 16:37:19.810 [qtp229995302-20] ReimbursementServiceImpl -Left getAUserReimbursementService() located in service Layer
+[INFO ] 2021-12-02 16:38:28.366 [qtp229995302-17] UserServiceImpl -Entered registerUserService() located in service Layer
+[INFO ] 2021-12-02 16:38:28.367 [qtp229995302-17] UserDaoImpl -Entered registerUser() is located in dao.
+[INFO ] 2021-12-02 16:38:28.372 [qtp229995302-17] UserDaoImpl -Left registerUser() is located in dao.
+[INFO ] 2021-12-02 16:38:28.373 [qtp229995302-17] UserServiceImpl -Left registerUserService() located in service Layer
+[INFO ] 2021-12-02 16:38:36.453 [qtp229995302-23] UserServiceImpl -Entered  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 16:38:36.454 [qtp229995302-23] UserDaoImpl -Entered  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 16:38:36.467 [qtp229995302-23] UserDaoImpl -Left  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 16:38:36.467 [qtp229995302-23] UserServiceImpl -Left  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 16:38:40.693 [qtp229995302-17] UserServiceImpl -Entered  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 16:38:40.693 [qtp229995302-17] UserDaoImpl -Entered  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 16:38:40.697 [qtp229995302-17] UserDaoImpl -Left  retrieveAllUsers() is located in dao.
+[INFO ] 2021-12-02 16:38:40.697 [qtp229995302-17] UserServiceImpl -Left  retrieveAllUserService() located in service Layer
+[INFO ] 2021-12-02 16:38:48.537 [qtp229995302-23] ReimbursementServiceImpl -Entered getAUserReimbursementService() located in service Layer
+[INFO ] 2021-12-02 16:38:48.538 [qtp229995302-23] ReimbursementDaoImpl -Entered getAUserReimbursement() located  in dao.
+[INFO ] 2021-12-02 16:38:48.540 [qtp229995302-23] ReimbursementDaoImpl -Left getAUserReimbursement() located  in dao.
+[INFO ] 2021-12-02 16:38:48.540 [qtp229995302-23] ReimbursementServiceImpl -Left getAUserReimbursementService() located in service Layer
+[INFO ] 2021-12-02 16:38:59.986 [qtp229995302-23] ReimbursementServiceImpl -Entered createReimbursementService() located in service Layer
+[INFO ] 2021-12-02 16:38:59.987 [qtp229995302-23] ReimbursementDaoImpl -Entered createReimbursment() is located in dao.

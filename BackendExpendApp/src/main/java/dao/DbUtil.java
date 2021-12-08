@@ -30,7 +30,7 @@ public class DbUtil {
 			// System.out.println("DBUTIL Connection Establish successfully to SHOPME DB...
 			// \n");
 			try {
-				conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "admin12");
+				conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
 
 			} catch (SQLException e) {
 				e.printStackTrace();
