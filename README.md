@@ -7,4 +7,4 @@ This is a collaborative Project whith Tulika & Tareeq
 are working as Frontend Developers .
 Jamal is on backend testing & James is on Backend & managing the team for the upcoming Sprint 1 .
 
-Project 2 is successfully under Continuous Integration with Jenkins & Github.
+Project 2 is successfully under Continuous Integration C.I with Jenkins & Github.
