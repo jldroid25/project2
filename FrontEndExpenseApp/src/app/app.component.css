@@ -1,0 +1,16 @@
+.placeholder {
+  display: flex;
+  flex-flow: column;
+  height: calc(100vh - 60px); //viewport height - app-navbar height
+}
+.inner-placeholder {
+  flex: 1; // if you want center container large space else will take size of the content or apply flex-basis
+}
+app-footer {
+  flex: auto; // up to you
+}
+app-navbar {
+  position: fixed;
+  top: 0px;
+  height: 60px;
+}
