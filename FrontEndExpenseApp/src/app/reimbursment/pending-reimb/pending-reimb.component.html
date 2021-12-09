@@ -27,7 +27,9 @@
       <thead>
           <tr>
               <th scope="col">Expense Id </th>
+              <!--
               <th scope="col">Expense Date</th>
+              -->
               <th scope="col">Expense Reason </th>
               <th scope="col">Amount</th>
               <th scope="col">Status </th>
@@ -40,7 +42,9 @@
           for the get method  Api call-->
           <tr *ngFor="let row of allReimbursements">
               <td>{{row.reimbId}}</td>
+              <!-- 
               <td>{{row.reimbDate | date}}</td>
+              -->
               <td>{{row.reimbReason}}</td>
               <td>{{row.reimbAmount}}</td>
               <td>{{row.reimbStatus}}</td>

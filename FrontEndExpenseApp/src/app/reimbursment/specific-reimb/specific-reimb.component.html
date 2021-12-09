@@ -27,7 +27,9 @@
       <thead>
           <tr>
               <th scope="col">Expense Id </th> 
+              <!--
               <th scope="col">Expense Date</th>
+              -->
               <th scope="col">Expense Reason </th>
               <th scope="col">Amount</th>
               <th scope="col">Status </th>
@@ -38,7 +40,9 @@
       <tbody>
           <tr *ngFor="let reimbusementObj of allReimbursements">
             <td>{{reimbusementObj.reimbId}}</td>
+            <!--
             <td>{{reimbusementObj.reimbDate | date}}</td>
+            -->
             <td>{{reimbusementObj.reimbReason}}</td>
             <td>{{reimbusementObj.reimbAmount | currency }}</td>
             <td>{{reimbusementObj.reimbStatus}}</td>

@@ -37,11 +37,17 @@ export class AuthCredService {
         sessionStorage.removeItem("userData");
       }
 
-      //For Reteiving your session later
+      //For Reteiving User_id
       retrieveUserId(){
         var data: any = sessionStorage.getItem("userData");
         var user: UserCred  = JSON.parse(data == null?'':data);
         return user.userId;
+      }
+       //For Reteiving user type or accessLevel
+       retrieveUserType(){
+        var data: any = sessionStorage.getItem("userData");
+        var user: UserCred  = JSON.parse(data == null?'':data);
+        return user.accessLevel;
       }
 
   constructor() { }

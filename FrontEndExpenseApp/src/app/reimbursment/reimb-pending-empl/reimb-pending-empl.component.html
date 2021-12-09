@@ -39,7 +39,9 @@
           for the get method  Api call-->
           <tr *ngFor="let reimbusementObj of allReimbursements">
             <td>{{reimbusementObj.reimbId}}</td>
+            <!--
             <td>{{reimbusementObj.reimbDate | date}}</td>
+            -->
             <td>{{reimbusementObj.reimbReason}}</td>
             <td>{{reimbusementObj.reimbAmount | currency}}</td>
             <td>{{reimbusementObj.reimbStatus}}</td>

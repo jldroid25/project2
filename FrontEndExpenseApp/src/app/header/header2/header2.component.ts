@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthCredService} from '../../user-credentials/auth-cred.service'
 
 @Component({
   selector: 'app-header2',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Header2Component implements OnInit {
 
-  constructor() { }
+  constructor(private authService : AuthCredService) { }
 
   ngOnInit(): void {
+  }
+  isLoggedIn() {
+    return this.authService.isLoggedIn;
+  }
+  retrieveUserType(){
+    return this.authService.retrieveUserType;
   }
 
 }

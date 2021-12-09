@@ -1,29 +1,53 @@
 .card {
     border: none;
-    width: 500px;
+    width: 380px;
     padding: 40px;
-    position: absolute;
-    left: 50%;
-    bottom: 30%;
-    transform: translate(-50%, 50%);
-    background: rgb(47, 129, 187);
-    background: linear-gradient(90deg,  rgb(56, 152, 136) 0%,
-    hsla(295, 46%, 30%, 1) 100% );
+    position: fixed;
+    top: 0px;
+    right: 20px;
+    background: white;
 }
-h1, h6 , .form-text{
-    color: wheat;
+
+h1, h6  {
+    color: black;
 }
+.form-text{
+    color: rgba(4, 19, 70, 0.904);
+}
+
 .form-label  {
-    color: whitesmoke ;
+    color: black ;
     font-weight: bolder;
 }
 .btn-primary {
     font-weight: bolder;
-    background: linear-gradient(90deg,  rgb(56, 152, 136) 0%,
-    hsla(295, 46%, 30%, 1) 100% );
+    background: black;
 }
 #RegLogin{
-    color: whitesmoke;
-    font-weight: bolder; 
+  /*  color: whitesmoke;*/
+    color: rgba(0, 17, 255, 0.342);
+    font-weight: bolder;
     padding-left: 38%;
+}
+.slider{
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height:100vh;
+    animation: animate 16s ease-in-out infinite;
+}
+@keyframes animate{
+    0%,100%{
+        background-image: url('src/assets/img/login1.jpg');
+    }
+    25%{
+        background-image: url('src/assets/img/login2.jpg');
+    }
+    50%{
+        background-image: url('src/assets/img/login3.jpg');
+    }
+    75%{
+        background-image: url('src/assets/img/login4.jpg');
+    }
 }
