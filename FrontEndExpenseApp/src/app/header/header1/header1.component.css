@@ -10,10 +10,13 @@
 .dropbtn {
   background-color: #fdfdfd;
   color: rgb(12, 9, 9);
-  padding: 16px;
+  /* padding: 16px; */
   font-size: 16px;
   border: none;
   cursor: pointer;
+  letter-spacing: 3px;
+  line-height: 20px;
+  text-transform: uppercase;
 }
 
 .dropbtn:hover,
