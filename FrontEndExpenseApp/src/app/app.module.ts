@@ -18,6 +18,9 @@ import { PendingReimbComponent } from './reimbursment/pending-reimb/pending-reim
 import { ReimbPendingEmplComponent } from './reimbursment/reimb-pending-empl/reimb-pending-empl.component';
 import { ReimbResolvedEmplComponent } from './reimbursment/reimb-resolved-empl/reimb-resolved-empl.component';
 import { ViewEmployeesComponent } from './manager/view-employees/view-employees.component';
+import { Header1Component } from './header/header1/header1.component';
+import { Header2Component } from './header/header2/header2.component';
+import { FooterComponent } from './footer/footer/footer.component';
   
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { ViewEmployeesComponent } from './manager/view-employees/view-employees.
     PendingReimbComponent,
     ReimbPendingEmplComponent,
     ReimbResolvedEmplComponent,
-    ViewEmployeesComponent
+    ViewEmployeesComponent,
+    Header1Component,
+    Header2Component,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
