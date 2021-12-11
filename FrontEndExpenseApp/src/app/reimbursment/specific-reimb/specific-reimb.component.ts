@@ -38,14 +38,16 @@ export class SpecificReimbComponent implements OnInit {
     
      //for the modal input type form value
      this.formValue = this.formbuilder.group({
-      reimb_reason : [''],
-      reimb_amount : ['']
+      reimb_reason  :  [''],
+      reimb_amount  :  [''],
+      reimb_receipt :  ['']
     })
     //For loading the page after a reimbursement was added.
     this.loadThisUSerReimbersements(this.reimbusementObj.userId);
     
     //For getting the userId & send it to the reimb_info table user_id column
     this.loadThisUSerReimbersements(this.authCredService.retrieveUserId());
+
   }
 
   //access a function  retrieve Reimmb
@@ -73,6 +75,7 @@ export class SpecificReimbComponent implements OnInit {
     //add more fields later if needed
     this.newReimbursement.reimbReason = this.formValue.value.reimb_reason;
     this.newReimbursement.reimbAmount = this.formValue.value.reimb_amount;
+   // this.newReimbursement.reimbAmount = this.formValue.value.reimb_receipt;
      // Let's post the data through the post request in service
     this.reimbusementService.addReimbursementService(this.newReimbursement).subscribe(
       (response: any) => {
