@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Reimbursement} from './reimbursement.model';
-import { map } from 'rxjs/operators';
+import {HttpClient, HttpRequest, HttpHeaders, HttpEvent} from '@angular/common/http';
+import { Observable} from 'rxjs';
 
 
 @Injectable({
@@ -61,5 +60,23 @@ export class ReimbursService {
   getResolvedReimbursementService() : Observable<Reimbursement[]> {
     return this.http.get<Reimbursement[]>(this.reimbUrl+"resolved/");
   } 
+
+     //--------Option 2 for opload the file 
+    
+     upload(file: File): Observable<HttpEvent<any>> {
+       const formData: FormData = new FormData();
+   
+       formData.append('file', file);
+   
+       const req = new HttpRequest('POST', `${this.reimbUrl}/upload`, formData, {
+         reportProgress: true,
+         responseType: 'json'
+       });
+       return this.http.request(req);
+     }
+     //Downloading / get the files
+     getFiles(): Observable<any> {
+       return this.http.get(`${this.reimbUrl}/files`);
+     }
   
 }
