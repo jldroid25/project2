@@ -39,8 +39,9 @@ export class SpecificReimbComponent implements OnInit {
     progress = 0;
     message = '';
     fileInfos !: Observable<any>;
+    
     //new upload method 
-   filenames: String[] = [];
+   filenames: string[] = [];
   fileStatus  = {status : '', requestType: '', percent : 0};
   
    constructor(private reimbusementService : ReimbursService, 
@@ -59,9 +60,6 @@ export class SpecificReimbComponent implements OnInit {
      this.formValue = this.formbuilder.group({
       reimb_reason  :  [''],
       reimb_amount  :  [''],
-
-     
-      
     })
     //For loading the page after a reimbursement was added.
     this.loadThisUSerReimbersements(this.reimbusementObj.userId);
@@ -149,11 +147,11 @@ private  reportProgress(httpEvent : HttpEvent<string[] | Blob>) : void {
   switch(httpEvent.type) {
     //case for upload Progress
     case HttpEventType.UploadProgress:
-      this.updateStatus(httpEvent.loaded, httpEvent.total!, "Uploading");
+      this.updateStatus(httpEvent.loaded, httpEvent.total!, "Uploading... ");
       break;
       //case for download Progress
       case HttpEventType.DownloadProgress:
-        this.updateStatus(httpEvent.loaded, httpEvent.total!, "Downloading");
+        this.updateStatus(httpEvent.loaded, httpEvent.total!, "Downloading... ");
         break;
 
         case HttpEventType.ResponseHeader:
@@ -163,6 +161,8 @@ private  reportProgress(httpEvent : HttpEvent<string[] | Blob>) : void {
           case HttpEventType.Response:
             //For upload logic
             if (httpEvent.body instanceof Array){
+              //once finish loading set status to done
+              this.fileStatus.status = 'done';
               for (const filename of httpEvent.body){
                 //using unshift to add the file top/beginnong 
                 this.filenames.unshift(filename);
@@ -173,6 +173,7 @@ private  reportProgress(httpEvent : HttpEvent<string[] | Blob>) : void {
               saveAs(new File([httpEvent.body!], httpEvent.headers.get('File-Name')!,
               {type: `${httpEvent.headers.get('Content-Type')}; charset=utf-8`}));
             }
+            this.fileStatus.status = 'done';
             break;
             default:
               console.log(httpEvent);
@@ -184,64 +185,6 @@ private  reportProgress(httpEvent : HttpEvent<string[] | Blob>) : void {
    this.fileStatus.requestType = requestType;
    this.fileStatus.percent = Math.round(100 * loaded / total);
   }
-
-  //----- File Upload ---------------//
-  /*
-  selectedFile : any = null;
-  //Method to select the file
-  onFileSelected(event : any){
-    this.selectedFile = <any>event.target.files[0];
-  }
-  
-  ------------Not bad------------ 
-
-   //Method to upload the file
-  onUpload(){
-    const fd = new FormData();
-    fd.append("image", this.selectedFile, this.selectedFile.name);
-    this.http.post("http://localhost:7777/api/reimbursements", this.selectedFile)
-   
-    .subscribe(res => {
-      console.log("James Testing --->");
-      console.log(res);
-    })
-    */
-
-    /*
-    // -------File upload option 2--
-    //Method to helps us to get the selected Files
-    selectedFile(event : any) {
-      this.selectedFiles = event.target.files;
-    }
-
-    //Method for uploading the File
-    upload() {
-      this.progress = 0;
-    
-      this.currentFile = this.selectedFiles.item(0) as any ;
-      this.reimbursService.upload(this.currentFile).subscribe(
-        event => {
-          if (event.type === HttpEventType.UploadProgress) {
-            if(event.total) {
-              const total : number = event.total;
-              this.progress = Math.round(100 * event.loaded / event.total);
-            } else {
-              console.log("Error, Progress data not available")
-            }
-          } else if (event instanceof HttpResponse) {
-            this.message = event.body.message;
-            this.fileInfos = this.reimbursService.getFiles();
-          }
-        },
-        err => {
-          this.progress = 0;
-          this.message = 'Could not upload the file!';
-          //this.currentFile = undefined;
-        });
-    
-      //this.selectedFiles = undefined;
-    }
-    */
 
   //----------------------------
   /*
