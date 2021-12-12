@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
 import {Router } from '@angular/router';
 import { ReimbursService } from '../reimburs.service';
 import { Reimbursement } from '../reimbursement.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import { AuthCredService } from '../../user-credentials/auth-cred.service';
-import {HttpClient, HttpResponse,  HttpEventType} from '@angular/common/http';
+import {HttpClient, HttpResponse,  HttpEventType, HttpEvent, HttpErrorResponse} from '@angular/common/http';
 import { Observable} from 'rxjs';
+import {saveAs} from 'file-saver';
 
 
 @Component({
@@ -38,6 +39,9 @@ export class SpecificReimbComponent implements OnInit {
     progress = 0;
     message = '';
     fileInfos !: Observable<any>;
+    //new upload method 
+   filenames: String[] = [];
+  fileStatus  = {status : '', requestType: '', percent : 0};
   
    constructor(private reimbusementService : ReimbursService, 
     private router: Router, 
@@ -47,8 +51,9 @@ export class SpecificReimbComponent implements OnInit {
     private formbuilder: FormBuilder) {}
 
   ngOnInit(): void {
-     //for file upload
-     this.fileInfos = this.reimbursService.getFiles();
+     
+    //for file upload - option 1
+    // this.fileInfos = this.reimbursService.getFiles();
     
      //for the modal input type form value
      this.formValue = this.formbuilder.group({
@@ -93,7 +98,7 @@ export class SpecificReimbComponent implements OnInit {
     this.newReimbursement.reimbAmount = this.formValue.value.reimb_amount;
     
     //for sending image to backend
-    //this.onUpload()
+    this.onUploadFiles
     
     // Let's post the data through the post request in service
     this.reimbusementService.addReimbursementService(this.newReimbursement).subscribe(
@@ -109,9 +114,78 @@ export class SpecificReimbComponent implements OnInit {
     ref?.click();
     this.formValue.reset();
   }
+  
+  //--------- upload file new option to consider ----//
+  //Function to upload 
+  onUploadFiles(files : File[]): void {
+    //put the files inside the formData & send them back to the service
+    const formData = new FormData();
+    for (const file of files) {formData.append('files', file, file.name); }
+    this.reimbursService.uploadFile(formData).subscribe(
+      event => {
+        console.log(event);
+        this.reportProgress(event);
+    },
+    (error: HttpErrorResponse)=> {
+      console.log(error);
+     }
+    );
+  }
+
+   //Function to download 
+  onDownloadFiles(filename : string): void {
+    this.reimbursService.downLoadFile(filename).subscribe(
+      event => {
+        console.log(event);
+        this.reportProgress(event);
+    },
+    (error: HttpErrorResponse)=> {
+      console.log(error);
+     }
+    );
+  }
+
+private  reportProgress(httpEvent : HttpEvent<string[] | Blob>) : void {
+  switch(httpEvent.type) {
+    //case for upload Progress
+    case HttpEventType.UploadProgress:
+      this.updateStatus(httpEvent.loaded, httpEvent.total!, "Uploading");
+      break;
+      //case for download Progress
+      case HttpEventType.DownloadProgress:
+        this.updateStatus(httpEvent.loaded, httpEvent.total!, "Downloading");
+        break;
+
+        case HttpEventType.ResponseHeader:
+          console.log('Header returned', httpEvent);
+          break;
+
+          case HttpEventType.Response:
+            //For upload logic
+            if (httpEvent.body instanceof Array){
+              for (const filename of httpEvent.body){
+                //using unshift to add the file top/beginnong 
+                this.filenames.unshift(filename);
+              }
+            } else {
+              // download Loic - 
+              //saveFileAs is from npm file-saver module download 
+              saveAs(new File([httpEvent.body!], httpEvent.headers.get('File-Name')!,
+              {type: `${httpEvent.headers.get('Content-Type')}; charset=utf-8`}));
+            }
+            break;
+            default:
+              console.log(httpEvent);
+              break;
+  }
+}
+  private updateStatus(loaded: number, total: number, requestType: string) {
+   this.fileStatus.status = 'progess';
+   this.fileStatus.requestType = requestType;
+   this.fileStatus.percent = Math.round(100 * loaded / total);
+  }
 
   //----- File Upload ---------------//
-
   /*
   selectedFile : any = null;
   //Method to select the file
@@ -133,8 +207,8 @@ export class SpecificReimbComponent implements OnInit {
     })
     */
 
+    /*
     // -------File upload option 2--
-
     //Method to helps us to get the selected Files
     selectedFile(event : any) {
       this.selectedFiles = event.target.files;
@@ -167,10 +241,9 @@ export class SpecificReimbComponent implements OnInit {
     
       //this.selectedFiles = undefined;
     }
+    */
 
-    
- 
-
+  //----------------------------
   /*
   // Don't delete - We might need to use it
   updateReimbursementDetails(){
@@ -187,4 +260,5 @@ export class SpecificReimbComponent implements OnInit {
   })
   }
   */
+
 }//class

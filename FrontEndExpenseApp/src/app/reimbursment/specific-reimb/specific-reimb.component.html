@@ -79,12 +79,15 @@
               aria-describedby="reimbAmountHelp">
           </div>
 
-          <!--
-          <div class="mb-3">
+          
+          <!--         
+             <div class="mb-3">
             <h6>Add Image Receipt</h6>
-            <input name="file" type="file" onclick="this.value = null" (change)="onFileSelected($event)" style="width:80%" />
+            <input name="file" type="file" onclick="this.value = null" (change)="onUploadFiles()" style="width:80%" />
           </div>
         -->
+        
+        <!--
         <div *ngIf="currentFile" class="progress">
           <div
             class="progress-bar progress-bar-info progress-bar-striped"
@@ -98,11 +101,13 @@
           </div>
         </div>
         
+        
         <label class="btn btn-default">
           <input type="file" (change)="selectedFile($event)" />
         </label>
+      
         
-        <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+        <button class="btn btn-success" [disabled]="!selectedFiles" (click)="onUploadFiles">
           Upload
         </button>
         
@@ -119,6 +124,7 @@
             </li>
           </ul>
         </div>
+      -->
 
         </form>
       </div>
