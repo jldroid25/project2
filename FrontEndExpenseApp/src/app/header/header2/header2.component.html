@@ -1,9 +1,72 @@
 
 <nav class="navbar navbar-light bg-light navbar-outline">
-    <div class="container">
-      <a class="navbar-brand" href="#">About Us</a>
+    <!-- <div class="container">
+     <a class="navbar-brand" href="#">About Us</a>
       <a class="navbar-brand" href="#">Company Stock</a>
       <a class="navbar-brand" href="#">Our Mission</a>
-      <a class="navbar-brand" href="#">Reimbursement Policy</a>
-    </div>
+      <a class="navbar-brand" href="#">Reimbursement Policy</a> 
+     </div>-->
+      <ul class="navbar-nav">
+        <li 
+          class="nav-item" 
+          *ngIf="isLoggedIn() && retrieveUserType() == 'employee'">
+          <a class="nav-brand" routerLink="employee-dashboard">Employee-Dashboard</a>
+        </li>
+        <li 
+          class="nav-item" 
+          *ngIf="isLoggedIn() && retrieveUserType() == 'employee'">
+          <a class="nav-brand" routerLink="employee-info">Employee-Info</a>
+        </li>
+        <li 
+          class="nav-item"
+          *ngIf="isLoggedIn() && retrieveUserType() == 'employee'">
+          <a class="nav-brand" routerLink="reimb-dashboard">Reimb-Dashboard</a>
+        </li>
+        <li 
+          class="nav-item"
+          *ngIf="isLoggedIn() && retrieveUserType() == 'employee'">
+          <a class="nav-brand" routerLink="specific-reimb">Specific_Reimbusment</a>
+        </li>
+        <li 
+          class="nav-item"
+          *ngIf="isLoggedIn() && retrieveUserType() == 'employee'">
+          <a class="nav-brand" routerLink="reimb-pending-emp">Reimbursment-Pending-Emp</a>
+        </li>
+        <li 
+        class="nav-item"
+        *ngIf="isLoggedIn() && retrieveUserType() == 'employee'">
+        <a class="nav-brand" routerLink="reimb-resolved-emp">Reimb-Resolve-Emp</a>
+      </li>
+        <li 
+          class="nav-item"
+          *ngIf="isLoggedIn() && retrieveUserType() == 'manager'">
+          <a class="nav-brand" routerLink="manager-dashboard">Manager-Dashboard</a>
+        </li>
+        <li 
+          class="nav-item"
+          *ngIf="isLoggedIn() && retrieveUserType() == 'manager'">
+          <a class="nav-brand" routerLink="view-employees">View-Employee</a>
+        </li>
+        <li 
+        class="nav-item"
+        *ngIf="isLoggedIn() && retrieveUserType() == 'manager'">
+        <a class="nav-brand" routerLink="reimb-dashboard">Reimb-Dashboard</a>
+      </li>
+      <li 
+        class="nav-item"
+        *ngIf="isLoggedIn() && retrieveUserType() == 'manager'">
+        <a class="nav-brand" routerLink="specific-reimb">Specific-Reimbursment</a>
+      </li>
+      <li 
+        class="nav-item"
+        *ngIf="isLoggedIn() && retrieveUserType() == 'manager'">
+        <a class="nav-brand" routerLink="pending-reimb">Pending-Reimbursment</a>
+      </li>
+      <li 
+        class="nav-item"
+        *ngIf="isLoggedIn() && retrieveUserType() == 'manager'">
+        <a class="nav-brand" routerLink="resolved-reimb">Resolved-Eeimbursment</a>
+      </li>
+    </ul>
+   
   </nav>
