@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
 import {Router } from '@angular/router';
 import { ReimbursService } from '../reimburs.service';
 import { Reimbursement } from '../reimbursement.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import { AuthCredService } from '../../user-credentials/auth-cred.service';
-import {HttpClient, HttpResponse,  HttpEventType} from '@angular/common/http';
+import {HttpClient, HttpResponse,  HttpEventType, HttpEvent, HttpErrorResponse} from '@angular/common/http';
 import { Observable} from 'rxjs';
+import {saveAs} from 'file-saver';
 
 
 @Component({
@@ -38,6 +39,10 @@ export class SpecificReimbComponent implements OnInit {
     progress = 0;
     message = '';
     fileInfos !: Observable<any>;
+    
+    //new upload method 
+   filenames: string[] = [];
+  fileStatus  = {status : '', requestType: '', percent : 0};
   
    constructor(private reimbusementService : ReimbursService, 
     private router: Router, 
@@ -47,16 +52,14 @@ export class SpecificReimbComponent implements OnInit {
     private formbuilder: FormBuilder) {}
 
   ngOnInit(): void {
-     //for file upload
-     this.fileInfos = this.reimbursService.getFiles();
+     
+    //for file upload - option 1
+    // this.fileInfos = this.reimbursService.getFiles();
     
      //for the modal input type form value
      this.formValue = this.formbuilder.group({
       reimb_reason  :  [''],
       reimb_amount  :  [''],
-
-     
-      
     })
     //For loading the page after a reimbursement was added.
     this.loadThisUSerReimbersements(this.reimbusementObj.userId);
@@ -93,7 +96,7 @@ export class SpecificReimbComponent implements OnInit {
     this.newReimbursement.reimbAmount = this.formValue.value.reimb_amount;
     
     //for sending image to backend
-    //this.onUpload()
+    this.onUploadFiles
     
     // Let's post the data through the post request in service
     this.reimbusementService.addReimbursementService(this.newReimbursement).subscribe(
@@ -109,68 +112,81 @@ export class SpecificReimbComponent implements OnInit {
     ref?.click();
     this.formValue.reset();
   }
-
-  //----- File Upload ---------------//
-
-  /*
-  selectedFile : any = null;
-  //Method to select the file
-  onFileSelected(event : any){
-    this.selectedFile = <any>event.target.files[0];
-  }
   
-  ------------Not bad------------ 
+  //--------- upload file new option to consider ----//
+  //Function to upload 
+  onUploadFiles(files : File[]): void {
+    //put the files inside the formData & send them back to the service
+    const formData = new FormData();
+    for (const file of files) {formData.append('files', file, file.name); }
+    this.reimbursService.uploadFile(formData).subscribe(
+      event => {
+        console.log(event);
+        this.reportProgress(event);
+    },
+    (error: HttpErrorResponse)=> {
+      console.log(error);
+     }
+    );
+  }
 
-   //Method to upload the file
-  onUpload(){
-    const fd = new FormData();
-    fd.append("image", this.selectedFile, this.selectedFile.name);
-    this.http.post("http://localhost:7777/api/reimbursements", this.selectedFile)
-   
-    .subscribe(res => {
-      console.log("James Testing --->");
-      console.log(res);
-    })
-    */
+   //Function to download 
+  onDownloadFiles(filename : string): void {
+    this.reimbursService.downLoadFile(filename).subscribe(
+      event => {
+        console.log(event);
+        this.reportProgress(event);
+    },
+    (error: HttpErrorResponse)=> {
+      console.log(error);
+     }
+    );
+  }
 
-    // -------File upload option 2--
+private  reportProgress(httpEvent : HttpEvent<string[] | Blob>) : void {
+  switch(httpEvent.type) {
+    //case for upload Progress
+    case HttpEventType.UploadProgress:
+      this.updateStatus(httpEvent.loaded, httpEvent.total!, "Uploading... ");
+      break;
+      //case for download Progress
+      case HttpEventType.DownloadProgress:
+        this.updateStatus(httpEvent.loaded, httpEvent.total!, "Downloading... ");
+        break;
 
-    //Method to helps us to get the selected Files
-    selectedFile(event : any) {
-      this.selectedFiles = event.target.files;
-    }
+        case HttpEventType.ResponseHeader:
+          console.log('Header returned', httpEvent);
+          break;
 
-    //Method for uploading the File
-    upload() {
-      this.progress = 0;
-    
-      this.currentFile = this.selectedFiles.item(0) as any ;
-      this.reimbursService.upload(this.currentFile).subscribe(
-        event => {
-          if (event.type === HttpEventType.UploadProgress) {
-            if(event.total) {
-              const total : number = event.total;
-              this.progress = Math.round(100 * event.loaded / event.total);
+          case HttpEventType.Response:
+            //For upload logic
+            if (httpEvent.body instanceof Array){
+              //once finish loading set status to done
+              this.fileStatus.status = 'done';
+              for (const filename of httpEvent.body){
+                //using unshift to add the file top/beginnong 
+                this.filenames.unshift(filename);
+              }
             } else {
-              console.log("Error, Progress data not available")
+              // download Loic - 
+              //saveFileAs is from npm file-saver module download 
+              saveAs(new File([httpEvent.body!], httpEvent.headers.get('File-Name')!,
+              {type: `${httpEvent.headers.get('Content-Type')}; charset=utf-8`}));
             }
-          } else if (event instanceof HttpResponse) {
-            this.message = event.body.message;
-            this.fileInfos = this.reimbursService.getFiles();
-          }
-        },
-        err => {
-          this.progress = 0;
-          this.message = 'Could not upload the file!';
-          //this.currentFile = undefined;
-        });
-    
-      //this.selectedFiles = undefined;
-    }
+            this.fileStatus.status = 'done';
+            break;
+            default:
+              console.log(httpEvent);
+              break;
+  }
+}
+  private updateStatus(loaded: number, total: number, requestType: string) {
+   this.fileStatus.status = 'progess';
+   this.fileStatus.requestType = requestType;
+   this.fileStatus.percent = Math.round(100 * loaded / total);
+  }
 
-    
- 
-
+  //----------------------------
   /*
   // Don't delete - We might need to use it
   updateReimbursementDetails(){
@@ -187,4 +203,5 @@ export class SpecificReimbComponent implements OnInit {
   })
   }
   */
+
 }//class
