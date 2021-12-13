@@ -11,6 +11,9 @@ import { Observable} from 'rxjs';
 export class ReimbursService {
 
   reimbUrl = "http://localhost:7777/api/reimbursements";
+  
+  //For the file upload/download
+  server = "http://localhost:7777"
 
   constructor(private http: HttpClient) { }
 
@@ -61,6 +64,32 @@ export class ReimbursService {
     return this.http.get<Reimbursement[]>(this.reimbUrl+"resolved/");
   } 
 
+  // ---- File upload Option 1
+
+  //The opload file function
+  uploadFile(formData : FormData): Observable<HttpEvent<string[]>> {
+    return this.http.post<string[]>('${this.server}/api/upload', formData, {
+      //passing some options , progress & events
+      reportProgress: true,
+      observe : 'events'
+    });
+  }
+
+  //The download file function
+  downLoadFile(filename : string): Observable<HttpEvent<Blob>> {
+    return this.http.get('${this.server}/api/download/${filename}', {
+      //passing some options , progress & events
+      reportProgress: true,
+      observe : 'events',
+      //Tell Http the response type will be of Blog
+      responseType : 'blob'
+    });
+  }
+
+
+
+  /*
+     //Remove if option works
      //--------Option 2 for opload the file 
     
      upload(file: File): Observable<HttpEvent<any>> {
@@ -78,5 +107,7 @@ export class ReimbursService {
      getFiles(): Observable<any> {
        return this.http.get(`${this.reimbUrl}/files`);
      }
+     */
+     
   
 }

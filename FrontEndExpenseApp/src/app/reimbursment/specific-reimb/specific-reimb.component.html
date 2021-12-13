@@ -55,17 +55,16 @@
   </tbody>
 </table>
 
-<!-- Modal to add Employee data -->
+<!-- Modal to add Employee Reimbursement -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Submit Reimbursement</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       <div class="modal-body">
-
         <form [formGroup]="formValue">
           <div class="mb-3">
             <label for="reimb_reason" class="form-label">Expense Reason</label>
@@ -74,56 +73,48 @@
           </div>
 
           <div class="mb-3">
-            <label for="reimb_amount" class="form-label">Amount Requested</label>
+            <label for="reimb_amount" class="form-label">Amount</label>
             <input type="text" formControlName="reimb_amount" class="form-control" id="InputReimbAmount "
               aria-describedby="reimbAmountHelp">
           </div>
+      </form>
 
-          <!--
-          <div class="mb-3">
-            <h6>Add Image Receipt</h6>
-            <input name="file" type="file" onclick="this.value = null" (change)="onFileSelected($event)" style="width:80%" />
-          </div>
-        -->
-        <div *ngIf="currentFile" class="progress">
-          <div
-            class="progress-bar progress-bar-info progress-bar-striped"
-            role="progressbar"
-            attr.aria-valuenow="{{ progress }}"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            [ngStyle]="{ width: progress + '%' }"
-          >
-            {{ progress }}%
+          <!-- For New upload- download option-->
+            <div>
+              <h6>Upload Image Receipt</h6>
+              <div *ngIf="fileStatus.status==='progress' ">    
+              <div class="progress">
+                <div [style.width.%]="fileStatus.percent" class="progress-bar progress-bar-animated bg-info" role="progressbar" aria-valuenow=!>
+                  {{ fileStatus.requestType }} {{ fileStatus.percent }}
+                </div>
+              </div>
+            </div> <!-- ngIf-->
+            </div>
+
+          <form method="POST" enctype="multipart/form-data">
+            <fieldset>
+            <div class="form-group">
+              <div>
+                <input type="file" (change)="onDownloadFiles($event.target.files)" name="files"  multiple class="form-control">
+              </div>
+            </div>
+          </fieldset>
+          </form>
+
+         <!-- New upload- download option-->
+        <div *ngIf="filenames.length > 0" class="js-upload-finished">
+          <h6>Process files</h6>
+          <div *ngFor="let filename of filenames" class="list-group">
+            <a (click)="onDownloadFiles(filename)" class="list-group-item list-group-item-success" style="cursor: pointer;">
+              {{filename }}
+              <a class="alert-success float-right"> Download</a>
+            </a>
           </div>
         </div>
-        
-        <label class="btn btn-default">
-          <input type="file" (change)="selectedFile($event)" />
-        </label>
-        
-        <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
-          Upload
-        </button>
-        
-        <div class="alert alert-light" role="alert">{{ message }}</div>
-        
-        <div class="card">
-          <div class="card-header">List of Files</div>
-          <ul
-            class="list-group list-group-flush"
-            *ngFor="let file of fileInfos | async"
-          >
-            <li class="list-group-item">
-              <a href="{{ file.url }}">{{ file.name }}</a>
-            </li>
-          </ul>
-        </div>
+      
+      </div><!-- modal div -->
 
-        </form>
-      </div>
       <div class="modal-footer">
-
         <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" (click)="addReimbursement()" class="btn btn-primary">Add</button>
       </div>
