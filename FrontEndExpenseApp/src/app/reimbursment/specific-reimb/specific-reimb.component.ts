@@ -7,6 +7,7 @@ import { AuthCredService } from '../../user-credentials/auth-cred.service';
 import {HttpClient, HttpResponse,  HttpEventType, HttpEvent, HttpErrorResponse} from '@angular/common/http';
 import { Observable} from 'rxjs';
 import {saveAs} from 'file-saver';
+import { ConditionalExpr } from '@angular/compiler';
 
 
 @Component({
@@ -28,8 +29,9 @@ export class SpecificReimbComponent implements OnInit {
     reimbDate    : " ",
     reimbReason  : " ",
     reimbAmount  : 0,
-    reimbStatus  : " ",
+    reimbStatus  : "",
     reimbRemoved : false,
+    reimbImage   : "",
     userId       : this.authCredService.retrieveUserId()
    }
 
@@ -47,7 +49,6 @@ export class SpecificReimbComponent implements OnInit {
    constructor(private reimbusementService : ReimbursService, 
     private router: Router, 
     private http: HttpClient,
-    private reimbursService : ReimbursService,
     private authCredService: AuthCredService,
     private formbuilder: FormBuilder) {}
 
@@ -60,6 +61,7 @@ export class SpecificReimbComponent implements OnInit {
      this.formValue = this.formbuilder.group({
       reimb_reason  :  [''],
       reimb_amount  :  [''],
+      file_image    :  ['']
     })
     //For loading the page after a reimbursement was added.
     this.loadThisUSerReimbersements(this.reimbusementObj.userId);
@@ -96,13 +98,28 @@ export class SpecificReimbComponent implements OnInit {
     this.newReimbursement.reimbAmount = this.formValue.value.reimb_amount;
     
     //for sending image to backend
-    this.onUploadFiles
+    //this.onUploadFiles
     
     // Let's post the data through the post request in service
     this.reimbusementService.addReimbursementService(this.newReimbursement).subscribe(
       (response: any) => {
+        console.log(response);
         // To reload the page with new user Reimbursement just added
-        this.loadThisUSerReimbersements(this.reimbusementObj.userId);
+        //this.loadThisUSerReimbersements(this.reimbusementObj.userId);
+        const formData = new FormData();
+        formData.append('files', this.formValue.get('file_image')?.value);
+       
+        //----testing Removed Later ----------//
+        console.log(this.formValue);
+        console.log(this.formValue.get('file_image')?.value);
+        console.log("formData :");
+        console.log(formData);
+        console.log(formData.get('files'));
+        
+        this.reimbusementService.uploadFile(formData, response.reimbId).subscribe((res) => {
+          console.log(res);
+
+        })
       },
       (error: any) => {
         console.log(error);
@@ -114,6 +131,7 @@ export class SpecificReimbComponent implements OnInit {
   }
   
   //--------- upload file new option to consider ----//
+  /*
   //Function to upload 
   onUploadFiles(files : File[]): void {
     //put the files inside the formData & send them back to the service
@@ -129,7 +147,10 @@ export class SpecificReimbComponent implements OnInit {
      }
     );
   }
+  */
 
+  // download by filename
+  /*
    //Function to download 
   onDownloadFiles(filename : string): void {
     this.reimbursService.downLoadFile(filename).subscribe(
@@ -142,6 +163,21 @@ export class SpecificReimbComponent implements OnInit {
      }
     );
   }
+  */
+ /*
+    //Function to download by id
+    onDownloadFiles(imgId : number): void {
+      this.reimbursService.downLoadFile(imgId).subscribe(
+        event => {
+          console.log(event);
+          this.reportProgress(event);
+      },
+      (error: HttpErrorResponse)=> {
+        console.log(error);
+       }
+      );
+    }
+    */
 
 private  reportProgress(httpEvent : HttpEvent<string[] | Blob>) : void {
   switch(httpEvent.type) {

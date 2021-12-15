@@ -36,6 +36,7 @@
       <th scope="col">Amount</th>
       <th scope="col">Status </th>
       <th scope="col">User Id </th>
+      <th scope="col">Receipt Image </th>
 
     </tr>
   </thead>
@@ -49,11 +50,36 @@
       <td>{{reimbusementObj.reimbAmount | currency }}</td>
       <td>{{reimbusementObj.reimbStatus}}</td>
       <td>{{reimbusementObj.userId}}</td>
+      <td>{{reimbusementObj.reimbImage }}</td>
       <td>
       </td>
     </tr>
   </tbody>
 </table>
+
+<br>
+
+<div class="nav-left-section">
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+    sed do eiusmod tempor incididunt ut labore et dolore magna 
+    aliqua. Dignissim cras tincidunt lobortis feugiat vivamus 
+    at augue. Semper eget duis at tellus at urna. Egestas erat 
+    imperdiet sed euismod nisi porta lorem mollis. 
+    Sit amet aliquam id diam maecenas.</p>
+
+
+</div>
+<br>
+<div class="user-right-section">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+    sed do eiusmod tempor incididunt ut labore et dolore magna 
+    aliqua. Dignissim cras tincidunt lobortis feugiat vivamus 
+    at augue. Semper eget duis at tellus at urna. Egestas erat 
+    imperdiet sed euismod nisi porta lorem mollis. 
+    Sit amet aliquam id diam maecenas.</p>
+
+</div>
 
 <!-- Modal to add Employee Reimbursement -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -65,6 +91,7 @@
       </div>
 
       <div class="modal-body">
+
         <form [formGroup]="formValue">
           <div class="mb-3">
             <label for="reimb_reason" class="form-label">Expense Reason</label>
@@ -77,9 +104,13 @@
             <input type="text" formControlName="reimb_amount" class="form-control" id="InputReimbAmount "
               aria-describedby="reimbAmountHelp">
           </div>
+          <br>
+          <div>
+            <input type="file" formControlName="file_image"  name="files"  multiple class="form-control">
+          </div>
       </form>
 
-          <!-- For New upload- download option-->
+          <!-- For Displaying Progress Bar on upload/downnload-->
             <div>
               <h6>Upload Image Receipt</h6>
               <div *ngIf="fileStatus.status==='progress' ">    
@@ -90,7 +121,7 @@
               </div>
             </div> <!-- ngIf-->
             </div>
-
+<!--
           <form method="POST" enctype="multipart/form-data">
             <fieldset>
             <div class="form-group">
@@ -100,15 +131,18 @@
             </div>
           </fieldset>
           </form>
-
+        -->
+        
          <!-- New upload- download option-->
         <div *ngIf="filenames.length > 0" class="js-upload-finished">
           <h6>Process files</h6>
           <div *ngFor="let filename of filenames" class="list-group">
+            <!--
             <a (click)="onDownloadFiles(filename)" class="list-group-item list-group-item-success" style="cursor: pointer;">
               {{filename }}
               <a class="alert-success float-right"> Download</a>
             </a>
+          -->
           </div>
         </div>
       
@@ -116,7 +150,7 @@
 
       <div class="modal-footer">
         <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" (click)="addReimbursement()" class="btn btn-primary">Add</button>
+        <button type="button" (click) = "addReimbursement()" class="btn btn-primary">Add</button>
       </div>
     </div>
   </div>
