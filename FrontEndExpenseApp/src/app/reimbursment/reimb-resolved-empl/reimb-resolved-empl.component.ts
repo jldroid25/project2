@@ -22,6 +22,7 @@ export class ReimbResolvedEmplComponent implements OnInit {
     reimbAmount  : 0,
     reimbStatus  : " ",
     reimbRemoved : false,
+    rbReceipt   : "",
     userId       : 0,
    }
   

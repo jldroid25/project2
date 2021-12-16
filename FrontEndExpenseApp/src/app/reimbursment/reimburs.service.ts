@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Reimbursement} from './reimbursement.model';
-import { map } from 'rxjs/operators';
+import {HttpClient, HttpRequest, HttpHeaders, HttpEvent} from '@angular/common/http';
+import { Observable} from 'rxjs';
 
 
 @Injectable({
@@ -12,6 +11,9 @@ import { map } from 'rxjs/operators';
 export class ReimbursService {
 
   reimbUrl = "http://localhost:7777/api/reimbursements";
+  
+  //For the file upload/download testing
+  server = "http://localhost:7777"
 
   constructor(private http: HttpClient) { }
 
@@ -61,5 +63,67 @@ export class ReimbursService {
   getResolvedReimbursementService() : Observable<Reimbursement[]> {
     return this.http.get<Reimbursement[]>(this.reimbUrl+"resolved/");
   } 
+
+  // ---- File upload Option 1
+
+  //The opload file function
+  uploadFile(file : File, rid: number): Observable<any> { 
+    const formData = new FormData(); 
+    formData.append('files', file);
+    
+    // for testing -- removed later
+    console.log("James--> Ferom service layer ");
+    console.log(formData.get('files')); 
+
+    return this.http.put<any>(`${this.server}/api2/upload/`+rid, formData
+     );
+  }
+
+  /*
+  //The download file function
+  downLoadFile(filename : string): Observable<HttpEvent<Blob>> {
+    return this.http.get('${this.server}/api/download/${filename}', {
+      //passing some options , progress & events
+      reportProgress: true,
+      observe : 'events',
+      //Tell Http the response type will be of Blog
+      responseType : 'blob'
+    });
+  }
+  */
+   //The download file function
+   downLoadFile(imgId : number): Observable<HttpEvent<Blob>> {
+    return this.http.get(`${this.server}/api/download/${imgId}`, {
+      //passing some options , progress & events
+      reportProgress: true,
+      observe : 'events',
+      //Tell Http the response type will be of Blog
+      responseType : 'blob'
+    });
+  }
+
+
+
+  /*
+     //Remove if option works
+     //--------Option 2 for opload the file 
+    
+     upload(file: File): Observable<HttpEvent<any>> {
+       const formData: FormData = new FormData();
+   
+       formData.append('file', file);
+   
+       const req = new HttpRequest('POST', `${this.reimbUrl}/upload`, formData, {
+         reportProgress: true,
+         responseType: 'json'
+       });
+       return this.http.request(req);
+     }
+     //Downloading / get the files
+     getFiles(): Observable<any> {
+       return this.http.get(`${this.reimbUrl}/files`);
+     }
+     */
+     
   
 }
