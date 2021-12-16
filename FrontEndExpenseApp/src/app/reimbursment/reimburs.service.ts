@@ -67,11 +67,14 @@ export class ReimbursService {
   // ---- File upload Option 1
 
   //The opload file function
-  uploadFile(formData : FormData, rid: number): Observable<any> {
-    console.log('service layer:');
-    console.log(formData);
-    console.log(formData.get('files'));
+  uploadFile(file : File, rid: number): Observable<any> { 
+    const formData = new FormData(); 
+    formData.append('files', file);
     
+    // for testing -- removed later
+    console.log("James--> Ferom service layer ");
+    console.log(formData.get('files')); 
+
     return this.http.put<any>(`${this.server}/api2/upload/`+rid, formData
      );
   }

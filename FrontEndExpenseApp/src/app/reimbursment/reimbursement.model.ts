@@ -9,5 +9,5 @@ export class Reimbursement {
    reimbStatus  : string = '';
    reimbRemoved : boolean = false;
    userId       : number = 0;
-   reimbImage   : SafeUrl = "";
+   rbReceipt   : any = "";
 }

@@ -25,7 +25,7 @@ export class ReimbursmentDashboardComponent implements OnInit {
    reimbAmount  : 0,
    reimbStatus  : " ",
    reimbRemoved : false,
-   reimbImage   : "" ,
+   rbReceipt  : "" ,
    userId       : 0
   }
 

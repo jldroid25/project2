@@ -50,7 +50,7 @@
       <td>{{reimbusementObj.reimbAmount | currency }}</td>
       <td>{{reimbusementObj.reimbStatus}}</td>
       <td>{{reimbusementObj.userId}}</td>
-      <td>{{reimbusementObj.reimbImage }}</td>
+      <td><img [src]="reimbusementObj.rbReceipt"/></td>
       <td>
       </td>
     </tr>
@@ -106,7 +106,7 @@
           </div>
           <br>
           <div>
-            <input type="file" formControlName="file_image"  name="files"  multiple class="form-control">
+            <input type="file" (change)="selectFile($event)"  name="files"  multiple class="form-control">
           </div>
       </form>
 

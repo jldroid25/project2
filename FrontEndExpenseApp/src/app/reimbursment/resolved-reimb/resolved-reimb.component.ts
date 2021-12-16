@@ -24,7 +24,7 @@ export class ResolvedReimbComponent implements OnInit {
    reimbAmount  : 0,
    reimbStatus  : " ",
    reimbRemoved : false,
-   reimbImage   : "",
+   rbReceipt  : "",
    userId       : this.authCredService.retrieveUserId()
   }
 

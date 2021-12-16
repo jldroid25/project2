@@ -1,4 +1,4 @@
-import { Component, OnInit, Type } from '@angular/core';
+import { Component, OnInit, Sanitizer, Type } from '@angular/core';
 import {Router } from '@angular/router';
 import { ReimbursService } from '../reimburs.service';
 import { Reimbursement } from '../reimbursement.model';
@@ -8,6 +8,7 @@ import {HttpClient, HttpResponse,  HttpEventType, HttpEvent, HttpErrorResponse} 
 import { Observable} from 'rxjs';
 import {saveAs} from 'file-saver';
 import { ConditionalExpr } from '@angular/compiler';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class SpecificReimbComponent implements OnInit {
     reimbAmount  : 0,
     reimbStatus  : "",
     reimbRemoved : false,
-    reimbImage   : "",
+    rbReceipt   : "",
     userId       : this.authCredService.retrieveUserId()
    }
 
@@ -47,7 +48,8 @@ export class SpecificReimbComponent implements OnInit {
   fileStatus  = {status : '', requestType: '', percent : 0};
   
    constructor(private reimbusementService : ReimbursService, 
-    private router: Router, 
+    private router: Router,
+    private sanitizer: DomSanitizer, 
     private http: HttpClient,
     private authCredService: AuthCredService,
     private formbuilder: FormBuilder) {}
@@ -60,11 +62,11 @@ export class SpecificReimbComponent implements OnInit {
      //for the modal input type form value
      this.formValue = this.formbuilder.group({
       reimb_reason  :  [''],
-      reimb_amount  :  [''],
-      file_image    :  ['']
+      reimb_amount  :  ['']
+      //file_image    :  ['']
     })
     //For loading the page after a reimbursement was added.
-    this.loadThisUSerReimbersements(this.reimbusementObj.userId);
+    //this.loadThisUSerReimbersements(this.reimbusementObj.userId);
     
     //For getting the userId & send it to the reimb_info table user_id column
     this.loadThisUSerReimbersements(this.authCredService.retrieveUserId());
@@ -77,6 +79,21 @@ export class SpecificReimbComponent implements OnInit {
    this.reimbusementService.getASpecificUserReimbursementService(this.authCredService.retrieveUserId())
    .subscribe((response: any)=> {
     console.log(response);
+    //---For converting Byte Arrays to Image
+
+    response.forEach((reimburseObj: Reimbursement) => {
+      const reader = new FileReader();
+      const data = reimburseObj.rbReceipt;
+    reader.onload = (e) => reimburseObj.rbReceipt = e?.target?.result;
+    reader.readAsDataURL(new Blob([data]));
+    //----For converting url to safeUrl
+    reimburseObj.rbReceipt = this.sanitizer.bypassSecurityTrustResourceUrl(reimburseObj.rbReceipt);
+    console.log(reimburseObj.rbReceipt);
+    console.log("printing image ---> ");
+
+    })
+    
+    
      this.allReimbursements = response;
    }, (error: any)=>{
     this. errorReimbMsg = 'There was some internal error! Please try again later!';
@@ -91,21 +108,25 @@ export class SpecificReimbComponent implements OnInit {
       //add more when needed
   }
 
+  //----Setect File for upload feature
+  selectFile(event: any): void {
+    this.selectedFiles = event.target.files;
+    //
+    console.log("coming from selectFiles Method");
+    console.log(this.selectedFiles);
+
+  }
+
   // to Add a reimbursement
   addReimbursement(){
     //add more fields later if needed
     this.newReimbursement.reimbReason = this.formValue.value.reimb_reason;
     this.newReimbursement.reimbAmount = this.formValue.value.reimb_amount;
-    
-    //for sending image to backend
-    //this.onUploadFiles
-    
+  
     // Let's post the data through the post request in service
-    this.reimbusementService.addReimbursementService(this.newReimbursement).subscribe(
-      (response: any) => {
-        console.log(response);
-        // To reload the page with new user Reimbursement just added
-        //this.loadThisUSerReimbersements(this.reimbusementObj.userId);
+    this.reimbusementService.addReimbursementService(this.newReimbursement)
+    .subscribe((response: any) => {
+       // console.log(response);
         const formData = new FormData();
         formData.append('files', this.formValue.get('file_image')?.value);
        
@@ -115,15 +136,31 @@ export class SpecificReimbComponent implements OnInit {
         console.log("formData :");
         console.log(formData);
         console.log(formData.get('files'));
-        
-        this.reimbusementService.uploadFile(formData, response.reimbId).subscribe((res) => {
+
+        //------Sending the file, check if there or not ...
+        console.log(this.selectedFiles);
+
+        if (this.selectedFiles) {
+          const file: File | null = this.selectedFiles.item(0);
+          console.log("File-->");
+          console.log(file);
+    
+          if (file) {
+            this.currentFile = file;
+        this.reimbusementService.uploadFile(this.currentFile , response.reimbId).subscribe((
+          res) => {
           console.log(res);
 
+          // To reload the page with new user Reimbursement just added
+          this.loadThisUSerReimbersements(this.authCredService.retrieveUserId());
         })
+      }
+    }
       },
       (error: any) => {
         console.log(error);
       })
+   
     //Close the Form Automatically
     let ref = document.getElementById("cancel");
     ref?.click();
