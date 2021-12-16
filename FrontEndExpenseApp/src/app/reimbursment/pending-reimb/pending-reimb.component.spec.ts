@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { PendingReimbComponent } from './pending-reimb.component';
 
@@ -8,7 +10,8 @@ describe('PendingReimbComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PendingReimbComponent ]
+      declarations: [ PendingReimbComponent ],
+      imports:[HttpClientTestingModule,RouterTestingModule]
     })
     .compileComponents();
   });

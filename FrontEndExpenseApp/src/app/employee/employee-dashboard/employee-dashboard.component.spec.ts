@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { EmployeeDashboardComponent } from './employee-dashboard.component';
 
@@ -8,7 +10,8 @@ describe('EmployeeDashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EmployeeDashboardComponent ]
+      declarations: [ EmployeeDashboardComponent ],
+      imports:[ReactiveFormsModule,HttpClientTestingModule]
     })
     .compileComponents();
   });
