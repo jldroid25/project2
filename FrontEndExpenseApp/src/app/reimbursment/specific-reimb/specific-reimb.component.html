@@ -53,6 +53,7 @@
       </tbody>
   </table>
 
+<<<<<<< HEAD
   <!-- Modal to add Employee data -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -105,8 +106,77 @@
     -->
       
         <div class="modal-body">
+=======
+<!-- Modal to add Employee data -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
 
+      <div class="modal-body">
+
+        <form [formGroup]="formValue">
+          <div class="mb-3">
+            <label for="reimb_reason" class="form-label">Expense Reason</label>
+            <input type="text" formControlName="reimb_reason" class="form-control" id="InputReimbReason"
+              aria-describedby="reimbReasonHelp">
+          </div>
+
+          <div class="mb-3">
+            <label for="reimb_amount" class="form-label">Amount Requested</label>
+            <input type="text" formControlName="reimb_amount" class="form-control" id="InputReimbAmount "
+              aria-describedby="reimbAmountHelp">
+          </div>
+
+          <!--
+          <div class="mb-3">
+            <h6>Add Image Receipt</h6>
+            <input name="file" type="file" onclick="this.value = null" (change)="onFileSelected($event)" style="width:80%" />
+          </div>
+        -->
+        <div *ngIf="currentFile" class="progress">
+          <div
+            class="progress-bar progress-bar-info progress-bar-striped"
+            role="progressbar"
+            attr.aria-valuenow="{{ progress }}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            [ngStyle]="{ width: progress + '%' }"
+          >
+            {{ progress }}%
+          </div>
+        </div>
+        
+        <label class="btn btn-default">
+          <input type="file" (change)="selectedFile($event)" />
+        </label>
+        
+        <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+          Upload
+        </button>
+        
+        <div class="alert alert-light" role="alert">{{ message }}</div>
+        
+        <div class="card">
+          <div class="card-header">List of Files</div>
+          <ul
+            class="list-group list-group-flush"
+            *ngFor="let file of fileInfos | async"
+          >
+            <li class="list-group-item">
+              <a href="{{ file.url }}">{{ file.name }}</a>
+            </li>
+          </ul>
+        </div>
+>>>>>>> tulika-frontend
+
+        </form>
+      </div>
       <div class="modal-footer">
+
         <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" (click) = "addReimbursement()" class="btn btn-primary">Add</button>
       </div>
