@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms'
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms'
 import { AuthCredService } from 'src/app/user-credentials/auth-cred.service';
 import {UserCred} from '../../user-credentials/user-cred.model';
-import {UserCredService } from '../../user-credentials/user-cred.service'
-
+import {UserCredService } from '../../user-credentials/user-cred.service';
+import { HttpClient } from '@angular/common/http';
+import { EmailManagerService } from '../email-manager.service';
+//import { EmailManager } from '../email-manager.model';
 
 
 @Component({
@@ -15,6 +17,8 @@ export class ViewEmployeesComponent implements OnInit {
 
   //refering formGroup
  formValue !: FormGroup;
+ //For Email Form
+ formData !: FormGroup;
 
  //create an object from the employee model we created
  employeeModelObj : UserCred = new UserCred();
@@ -24,10 +28,11 @@ export class ViewEmployeesComponent implements OnInit {
 
  //Our Form builder Constructor 
  constructor(private formbuilder: FormBuilder,
-  // private api : EmployeeService,
+ // private emailMngModel : EmailManager,
   private authCredService : AuthCredService,
-   private api : UserCredService
-   ) {}
+  private contact : EmailManagerService,
+  private https: HttpClient,
+   private api : UserCredService) {}
 
  ngOnInit(): void {
    this.formValue = this.formbuilder.group({
@@ -39,6 +44,7 @@ export class ViewEmployeesComponent implements OnInit {
    //Calling the getAllEmployee() for it to there when
    // the api call runs
    this.getAllEmployees();
+   
  }
 //------------ Post API Call---------------//
 // posting method to send data from our EmployeeModelOjb 

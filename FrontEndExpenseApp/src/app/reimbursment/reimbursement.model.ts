@@ -6,8 +6,10 @@ export class Reimbursement {
    reimbDate    : string = '';
    reimbReason  : string = '';
    reimbAmount  : number = 0;
-   reimbStatus  : string = '';
+   reimbStatus  : string = 'Pending';
    reimbRemoved : boolean = false;
    userId       : number = 0;
+   
+   //Remove all of them - no longer needed
    rbReceipt   : any = "";
 }
