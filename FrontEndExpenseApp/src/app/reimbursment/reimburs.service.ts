@@ -12,6 +12,12 @@ import { map } from 'rxjs/operators';
 export class ReimbursService {
 
   reimbUrl = "http://localhost:7777/api/reimbursements";
+<<<<<<< HEAD
+  
+  //For the file upload/download testing
+  server = "http://localhost:7777"
+=======
+>>>>>>> tulika-frontend
 
   constructor(private http: HttpClient) { }
 
@@ -61,5 +67,26 @@ export class ReimbursService {
   getResolvedReimbursementService() : Observable<Reimbursement[]> {
     return this.http.get<Reimbursement[]>(this.reimbUrl+"resolved/");
   } 
+<<<<<<< HEAD
+=======
+
+     //--------Option 2 for opload the file 
+    
+     upload(file: File): Observable<HttpEvent<any>> {
+       const formData: FormData = new FormData();
+   
+       formData.append('file', file);
+   
+       const req = new HttpRequest('POST', `${this.reimbUrl}/upload`, formData, {
+         reportProgress: true,
+         responseType: 'json'
+       });
+       return this.http.request(req);
+     }
+     //Downloading / get the files
+     getFiles(): Observable<any> {
+       return this.http.get(`${this.reimbUrl}/files`);
+     }
+>>>>>>> tulika-frontend
   
 }

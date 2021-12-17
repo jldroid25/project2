@@ -1,21 +1,41 @@
-#footer {
+#boxes {
 
-  text-align: right;
-  background: #444444;
-  height: 60px;
-  width: 100%;
-  font-family: "Open Sans", sans-serif;
-  color: #ffffff;
-  position: fixed;
-  bottom: 0;
   text-align : center;
   font-weight: bold;
+  font-family: "Open Sans", sans-serif;
+  color: #ffffff;
+  background: #444444;
+  height: 150px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left:0;
+  clear: both;
+  
 }
-li {
+/*li {
   display: inline-block;
   padding-bottom: 15px;
   
-}
+}*/
 a {
   color: whitesmoke;
+}
+#leftbox {
+  float:left; 
+  width:25%;
+ 
+}
+#middlebox{
+  float:left; 
+  width:50%;
+ 
+}
+#rightbox{
+  float:right;
+  width:25%;
+
+}
+h6{
+   text-align:center;
 }

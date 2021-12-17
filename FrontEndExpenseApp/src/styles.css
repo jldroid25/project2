@@ -1,11 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 body {
+  
   margin: 0px;
   padding: 0px;
 }
 #empPage {
   color: whitesmoke;
-
   font-weight: bolder;
   font-family: "Courier New", Courier, monospace;
   padding-left: 30%;
@@ -16,10 +16,32 @@ body {
 }
 
 .table {
-  background-color: salmon;
+  
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #424242;
   border-style: dashed;
   border-color: black;
 }
+.nav-left-section{
+ 
+  background-color: #1b3039;
+  color: white;
+  text-align: center;
+  margin-left: 20px;
+  float: left;
+  height: 400px;
+  width: 150px;
+}
+.user-right-section{
+  background-color: yellow;
+  margin-right: 20px;
+  float: right;
+  height: 400px;
+  width: 200px;
+}
+
 body {
   background-color: darkgray;
 }

@@ -1,9 +1,9 @@
 .card {
   border: none;
-  width: 340px;
+  width: 300px;
   padding: 40px;
   position: fixed;
-  top:200px;
+  top:40px;
   right: 20px;
   background: white;
   padding: 30px;
