@@ -4,6 +4,7 @@ import { ReimbursService } from '../reimburs.service';
 import { Reimbursement } from '../reimbursement.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import { AuthCredService } from '../../user-credentials/auth-cred.service';
+import { ReimbImage } from '../reimb-image.model';
 
 @Component({
   selector: 'app-specific-reimb',
@@ -29,6 +30,7 @@ export class SpecificReimbComponent implements OnInit {
     userId       : this.authCredService.retrieveUserId(),
     rbReceipt    : ""
    }
+  
   
    constructor(private reimbusementService : ReimbursService, 
     private router: Router, 
@@ -109,10 +111,6 @@ export class SpecificReimbComponent implements OnInit {
     ref?.click();
     this.formValue.reset();
   }
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of 93c9fe3 (Pushing tulika's code to main)
   /*
   // Don't delete - We might need to use it
   updateReimbursementDetails(){
