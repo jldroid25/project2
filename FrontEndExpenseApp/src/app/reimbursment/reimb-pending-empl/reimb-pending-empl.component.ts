@@ -20,8 +20,9 @@ export class ReimbPendingEmplComponent implements OnInit {
     reimbDate    : " ",
     reimbReason  : " ",
     reimbAmount  : 0,
-    reimbStatus  : " ",
+    reimbStatus  : "Pending",
     reimbRemoved : false,
+    rbReceipt : "",
     userId       : this.authCredService.retrieveUserId()
    }
   

@@ -237,9 +237,4 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 		return allReimbPojo;
 	}
 
-	@Override
-	public void exitApplication() {
-		// TODO Auto-generated method stub
-	}
-
 }
