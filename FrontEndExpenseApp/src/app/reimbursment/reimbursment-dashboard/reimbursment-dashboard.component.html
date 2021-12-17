@@ -5,6 +5,8 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+ 
+  
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="http://localhost:4200/manager-dashboard">Manager DashBoard </a>
@@ -54,7 +56,25 @@
         </tr>
     </tbody>
 </table>
+<!--
 
+<div class="modal-body">
+   <h3>Contact Form</h3>
+    <from [formGroup]="formValue">
+      <label>name</label>
+      <input type="text" name="name"/>
+     
+      <label>Email</label>
+      <input type="email" name="user_email"/>
+
+      <label>Message</label>
+      <textarea name='message' rows='4'></textarea>
+      <input type='submit' value='send'/>
+
+  </from>
+</div>
+
+-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -78,10 +98,19 @@
               </div>
           </form>
       </div>
+
+     
+
       <div class="modal-footer">
         <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" (click)="updateReimbursementDetails()" class="btn btn-primary">Update</button>
       </div>
     </div>
   </div>
+
+  
+
 </div>
+
+
+ 
