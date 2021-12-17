@@ -79,18 +79,6 @@ export class ReimbursService {
      );
   }
 
-  /*
-  //The download file function
-  downLoadFile(filename : string): Observable<HttpEvent<Blob>> {
-    return this.http.get('${this.server}/api/download/${filename}', {
-      //passing some options , progress & events
-      reportProgress: true,
-      observe : 'events',
-      //Tell Http the response type will be of Blog
-      responseType : 'blob'
-    });
-  }
-  */
    //The download file function
    downLoadFile(imgId : number): Observable<HttpEvent<Blob>> {
     return this.http.get(`${this.server}/api/download/${imgId}`, {
@@ -102,28 +90,4 @@ export class ReimbursService {
     });
   }
 
-
-
-  /*
-     //Remove if option works
-     //--------Option 2 for opload the file 
-    
-     upload(file: File): Observable<HttpEvent<any>> {
-       const formData: FormData = new FormData();
-   
-       formData.append('file', file);
-   
-       const req = new HttpRequest('POST', `${this.reimbUrl}/upload`, formData, {
-         reportProgress: true,
-         responseType: 'json'
-       });
-       return this.http.request(req);
-     }
-     //Downloading / get the files
-     getFiles(): Observable<any> {
-       return this.http.get(`${this.reimbUrl}/files`);
-     }
-     */
-     
-  
 }

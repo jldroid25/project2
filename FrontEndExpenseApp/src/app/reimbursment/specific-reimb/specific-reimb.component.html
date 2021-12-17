@@ -29,7 +29,7 @@
   <thead>
     <tr>
       <th scope="col">Expense Id </th>
-      <th scope="col">Expense Date</th>
+      <th scope="col"> - </th>
       <th scope="col">Expense Reason </th>
       <th scope="col">Amount</th>
       <th scope="col">Status </th>
@@ -54,29 +54,7 @@
   </tbody>
 </table>
 
-<br>
 
-<div class="nav-left-section">
-
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-    sed do eiusmod tempor incididunt ut labore et dolore magna 
-    aliqua. Dignissim cras tincidunt lobortis feugiat vivamus 
-    at augue. Semper eget duis at tellus at urna. Egestas erat 
-    imperdiet sed euismod nisi porta lorem mollis. 
-    Sit amet aliquam id diam maecenas.</p>
-
-
-</div>
-<br>
-<div class="user-right-section">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-    sed do eiusmod tempor incididunt ut labore et dolore magna 
-    aliqua. Dignissim cras tincidunt lobortis feugiat vivamus 
-    at augue. Semper eget duis at tellus at urna. Egestas erat 
-    imperdiet sed euismod nisi porta lorem mollis. 
-    Sit amet aliquam id diam maecenas.</p>
-
-</div>
 
 <!-- Modal to add Employee Reimbursement -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -111,49 +89,8 @@
             <input type="file" (change)="selectFile($event)" />
           </label>
         </div>
-     <!--
-        <div class="col-4">
-          <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">
-            Upload
-          </button>
-          
-        </div>
-      -->
       </div>
-      
-      <!--
-      <div *ngIf="currentFile" class="progress my-3">
-        <div
-          class="progress-bar progress-bar-info progress-bar-striped"
-          role="progressbar"
-          attr.aria-valuenow="{{ progress }}"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          [ngStyle]="{ width: progress + '%' }"
-        >
-          {{ progress }}%
-        </div>
-      </div>
-  
-      
-      <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
-        -->
-      
-      <!--
-      <div class="card mt-3">
-        <div class="card-header">List of Files</div>
-        <ul
-          class="list-group list-group-flush"
-          *ngFor="let file of fileInfos | async"
-        >
-          <li class="list-group-item">
-            <a href="{{ file.url }}">{{ file.name }}</a>
-          </li>
-
-        </ul>
-      </div>
-    -->
-      
+       
       </div><!-- modal div -->
 
       <div class="modal-footer">
@@ -163,3 +100,4 @@
     </div>
   </div>
 </div>
+<br><br><br><br>
