@@ -3,7 +3,7 @@ import {Router } from '@angular/router';
 import { ReimbursService } from '../reimburs.service';
 import { Reimbursement } from '../reimbursement.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
-//import emailjs 'from emailjs-com';
+
 @Component({
   selector: 'app-reimbursment-dashboard',
   templateUrl: './reimbursment-dashboard.component.html',
@@ -118,16 +118,5 @@ export class ReimbursmentDashboardComponent implements OnInit {
     this.loadReimbursements();
   })
   }
-  /*
-  checkReimbursment(){
-  
-    if(reimbStatus=="Approved" ){
-
-    }
-    
-  }
-
-  export default Mailer;
-  */
 
 }//

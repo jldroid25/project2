@@ -16,7 +16,7 @@ export class Header2Component implements OnInit {
     return this.authService.isLoggedIn;
   }
   retrieveUserType(){
-    return this.authService.retrieveUserType();
+    return this.authService.retrieveUserType;
   }
 
 }

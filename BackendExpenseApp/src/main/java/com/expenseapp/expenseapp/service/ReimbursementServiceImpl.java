@@ -14,16 +14,10 @@ import com.expenseapp.expenseapp.entity.Reimbursement;
 import com.expenseapp.expenseapp.exception.ApplicationException;
 import com.expenseapp.expenseapp.pojo.ReimbursementPojo;
 
-
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-
-
-
 @Service
 public class ReimbursementServiceImpl implements ReimbursementService {
 
-	
+	private static final Logger logger = LogManager.getLogger(ReimbursementServiceImpl.class);
 
 	@Autowired
 	ReimbRepositoryDao reimbRepositoryDao;
@@ -47,7 +41,7 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 	public ReimbursementPojo createReimbursementService(ReimbursementPojo reimbursementPojo)
 			throws ApplicationException {
 
-		
+		logger.info("Entered createReimbursementService() in service.");
 		//as you can see we are copying the code into pojo several times below  
 		//you can create a class/utility or a 3rd party library method to do the copying below for us
 		Reimbursement newReimb = new Reimbursement(reimbursementPojo.getReimbId(), reimbursementPojo.getReimbDate(),
@@ -59,7 +53,7 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 		// set the primary key into the pojo
 	
 		reimbursementPojo.setReimbId(returnReimb.getReimbId());
-		
+		logger.info("Left createReimbursementService() in service.");
 		return reimbursementPojo;
 	}
 
@@ -67,7 +61,7 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 	public ReimbursementPojo updateReimbursementService(ReimbursementPojo reimbursementPojo)
 			throws ApplicationException {
 
-	
+		logger.info("Entered updateReimbursementService() in service.");
 		Reimbursement updateReimb = new Reimbursement(reimbursementPojo.getReimbId(), reimbursementPojo.getReimbDate(),
 				reimbursementPojo.getReimbReason(), reimbursementPojo.getReimbAmount(),
 				reimbursementPojo.getReimbStatus(), reimbursementPojo.isReimbRemoved(), reimbursementPojo.getUserId());
@@ -78,22 +72,22 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 		 * otherwise it is insert.
 		 */
 		Reimbursement returnReimb = reimbRepositoryDao.save(updateReimb);
-	
+		logger.info("Left updateReimbursementService() in service.");
 		return reimbursementPojo;
 	}
 
 	@Override
 	public boolean deleteReimbursementService(int reimbursementId) throws ApplicationException {
-		
+		logger.info("Entered deleteReimbursementService() in service.");
 		// We use the Spring Data Jpa Built-in method deleteById() for performing delete
 		this.reimbRepositoryDao.deleteById(reimbursementId);
-	
+		logger.info("Left deleteReimbursementService() in service.");
 		return true;
 	}
 
 	@Override
 	public ReimbursementPojo retrieveAReimbursementService(int reimbursementId) throws ApplicationException {
-	
+		logger.info("Entered retrieveAReimbursementService() in service.");
 		ReimbursementPojo reimbursementPojo = null;
 		/*
 		 * We are calling the Spring Data Jpa Built-in findById method to fetch a record
@@ -121,13 +115,13 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 					reimbursement.getReimbReason(), reimbursement.getReimbAmount(), reimbursement.getReimbStatus(),
 					reimbursement.isReimbRemoved(), reimbursement.getUserId());
 		}
-	
+		logger.info("Left retrieveAReimbursementService() in service.");
 		return reimbursementPojo;
 	}
 
 	@Override
 	public List<ReimbursementPojo> retrieveAllReimbursementsService() throws ApplicationException {
-		
+		logger.info("Entered retrieveAllReimbursementService() in service.");
 
 		// We are using the Spring Data Jpa Built-in findAll method to fetch all the
 		// records
@@ -143,7 +137,7 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 					reimbursement.getReimbStatus(), reimbursement.isReimbRemoved(), reimbursement.getUserId());
 			allReimbPojo.add(reimbPojo);
 		});
-		
+		logger.info("Left retrieveAllReimbursementService() in service.");
 		return allReimbPojo;
 	}
 
@@ -153,7 +147,7 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 
 	@Override
 	public List<ReimbursementPojo> getAUserReimbursementService(int userId) throws ApplicationException {
-	
+		logger.info("Entered getAUserReimbursementService() in service.");
 		
 		List<Reimbursement>AllUserReimbEntity = this.reimbRepositoryDao.getUserAllReimb(userId);
 		List<ReimbursementPojo> allReimbPojo = new ArrayList<ReimbursementPojo>();
@@ -165,7 +159,7 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 			allReimbPojo.add(reimbPojo);
 		});
 		  
-		
+		  logger.info("Left getAUserReimbursementService() in service.");
 		  
 		 return allReimbPojo  ;
 	}
@@ -174,7 +168,7 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 
 	@Override
 	public List<ReimbursementPojo> getAUserPendingReimbursementService(int userId) throws ApplicationException {
-		 
+		logger.info("Entered getAUserReimbursementService() in service."); 
 		
 		List<Reimbursement>AllUserPendingReimb = this.reimbRepositoryDao.getUserPendingReimb(userId);
 		
@@ -186,7 +180,7 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 					reimbursement.getReimbStatus(), reimbursement.isReimbRemoved(), reimbursement.getUserId());
 			allReimbPojo.add(reimbPojo);
 		});
-	
+		  logger.info("Left getAUserReimbursementService() in service.");
 		 return allReimbPojo;
 	}
 
@@ -241,12 +235,6 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 			allReimbPojo.add(reimbPojo);
 		});
 		return allReimbPojo;
-	}
-
-
-	@Override
-	public void exitApplication() {
-		// TODO Auto-generated method stub
 	}
 
 }
