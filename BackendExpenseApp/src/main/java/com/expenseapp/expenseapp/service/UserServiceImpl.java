@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import com.expenseapp.expenseapp.dao.UserRepositoryDao;
 import com.expenseapp.expenseapp.entity.User;
 import com.expenseapp.expenseapp.exception.ApplicationException;
-import com.expenseapp.expenseapp.pojo.UserPojo;
+import com.expenseapp.expenseapp.junitTesting.pojo.UserPojo;
 
 @Service
 public class UserServiceImpl  implements UserService{
@@ -65,12 +65,14 @@ public class UserServiceImpl  implements UserService{
 	@Override
 	public UserPojo updateUserService(UserPojo userInfo) throws ApplicationException {
 		logger.info("Entered updateUserService() in service.");
-		
-		User updateUser = new User(userInfo.getUserId(), userInfo.getFirstname(), userInfo.getLastname(),
+		System.out.println(userInfo);
+		 User updateUser = new User(userInfo.getUserId(), userInfo.getFirstname(), userInfo.getLastname(),
 				userInfo.getEmail(), userInfo.getUsername(), userInfo.getPassword(),  
 				userInfo.getAccessLevel(), userInfo.isUserRemoved());
+
 		
 		User returnUser = userRepositoryDao.save(updateUser);
+		System.out.println(returnUser);
 		logger.info("Left  updateUserService() in service.");		
 		return userInfo;
 	}

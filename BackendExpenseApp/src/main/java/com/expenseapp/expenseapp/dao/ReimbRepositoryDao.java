@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.expenseapp.expenseapp.entity.Reimbursement;
 
 /*The Dao is extending to JpaRepository. 
- * Therefore, we are must passing our Entity with a Generic Integer Wrapper class Type.
- * By extendin JpaRepository we automaticallyt get the 5 CRUD operations method &
+ * Therefore, we  must passing our Entity with a Generic Integer Wrapper class Type.
+ * By extending JpaRepository we automatically get the 5 CRUD operations method &
  * can start using them in the reimbursementService 
  * 
  * 

@@ -31,8 +31,9 @@ public class Reimbursement {
 	@Column(name="rb_id")
 	private int reimbId;
 	
-	@Column(name="rb_date",  columnDefinition="DATE")
+	//@Column(name="rb_date",  columnDefinition="DATE")
 	//@Column(name="rb_date")
+	@Column(name="rb_date", columnDefinition = "DATE DEFAULT CURRENT_DATE")
 	private Date reimbDate;
 	
 	@Column(name="rb_reason")

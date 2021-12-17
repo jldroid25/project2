@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.expenseapp.expenseapp.exception.ApplicationException;
-import com.expenseapp.expenseapp.pojo.UserPojo;
+import com.expenseapp.expenseapp.junitTesting.pojo.UserPojo;
 import com.expenseapp.expenseapp.service.UserService;
 
 @RestController

@@ -1,4 +1,4 @@
-package com.expenseapp.expenseapp.pojo;
+package com.expenseapp.expenseapp.junitTesting.pojo;
 
 public class UserPojo {
 	private int userId;

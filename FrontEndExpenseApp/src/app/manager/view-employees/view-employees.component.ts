@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms'
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms'
 import { AuthCredService } from 'src/app/user-credentials/auth-cred.service';
 import {UserCred} from '../../user-credentials/user-cred.model';
-import {UserCredService } from '../../user-credentials/user-cred.service'
-
+import {UserCredService } from '../../user-credentials/user-cred.service';
+import { HttpClient } from '@angular/common/http';
+import { EmailManagerService } from '../email-manager.service';
+//import { EmailManager } from '../email-manager.model';
 
 
 @Component({
@@ -15,6 +17,8 @@ export class ViewEmployeesComponent implements OnInit {
 
   //refering formGroup
  formValue !: FormGroup;
+ //For Email Form
+ formData !: FormGroup;
 
  //create an object from the employee model we created
  employeeModelObj : UserCred = new UserCred();
@@ -24,10 +28,11 @@ export class ViewEmployeesComponent implements OnInit {
 
  //Our Form builder Constructor 
  constructor(private formbuilder: FormBuilder,
-  // private api : EmployeeService,
+ // private emailMngModel : EmailManager,
   private authCredService : AuthCredService,
-   private api : UserCredService
-   ) {}
+  private contact : EmailManagerService,
+  private https: HttpClient,
+   private api : UserCredService) {}
 
  ngOnInit(): void {
    this.formValue = this.formbuilder.group({
@@ -39,6 +44,14 @@ export class ViewEmployeesComponent implements OnInit {
    //Calling the getAllEmployee() for it to there when
    // the api call runs
    this.getAllEmployees();
+
+   //-----For the Email Form
+   this.formData = this.formbuilder.group({
+    Fullname: new FormControl('', [Validators.required]),
+       Email:  new FormControl('', [Validators.compose([Validators.required, Validators.email])!]),
+     Comment: new FormControl('', [Validators.required])
+    })
+    
  }
 //------------ Post API Call---------------//
 // posting method to send data from our EmployeeModelOjb 
@@ -136,4 +149,57 @@ updateEmployeeDetails(){
  })
 }
 
+//----------- Manager Sending email Option 2-----------//
+
+onSubmit(formData: any) {
+  console.log(FormData)
+  this.contact.postMEssage(formData)
+  .subscribe((response: any) => {
+  location.href = 'https://mailthis.to/confirm'
+  console.log(response)
+  }, (error: { responseText: any; }) => {
+  console.warn(error.responseText)
+  console.log({ error })
+  })
 }
+
+
+//----------- Manager Sending email Option 1 from backend api-----------//
+
+/*
+title = 'EmailTemplate';
+
+dataSet : EmailManager = {
+  name    : '',
+  message : '',
+  email   : ''
+};
+
+onSubmit() {
+  this.https.post<any>('http://localhost:7777/api/email', 
+  this.dataSet).subscribe((res: any) => {
+    this.dataSet = res;
+    
+    //testing
+    console.log(this.dataSet);
+    alert('Email sent Successfully');
+    this.dataSet.name = '';
+    this.dataSet.message = '';
+    this.dataSet.email = '';
+
+  });
+}
+  */
+
+}//class
+
+
+//Email Model --- Create a separate component 
+/*
+interface  Details{
+  name    : String;
+  age     : Number;
+  country : String;
+  email   : String;
+};
+*/

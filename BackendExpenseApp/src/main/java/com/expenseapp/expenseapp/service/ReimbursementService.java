@@ -2,10 +2,8 @@ package com.expenseapp.expenseapp.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.expenseapp.expenseapp.exception.ApplicationException;
-import com.expenseapp.expenseapp.pojo.ReimbursementPojo;
+import com.expenseapp.expenseapp.junitTesting.pojo.ReimbursementPojo;
 
 public interface ReimbursementService {
 	//add validation to the code

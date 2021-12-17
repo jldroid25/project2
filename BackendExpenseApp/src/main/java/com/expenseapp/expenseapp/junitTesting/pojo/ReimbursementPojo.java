@@ -1,4 +1,4 @@
-package com.expenseapp.expenseapp.pojo;
+package com.expenseapp.expenseapp.junitTesting.pojo;
 
 import java.util.Date;
 

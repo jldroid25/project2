@@ -3,7 +3,7 @@ package com.expenseapp.expenseapp.service;
 import java.util.List;
 
 import com.expenseapp.expenseapp.exception.ApplicationException;
-import com.expenseapp.expenseapp.pojo.UserPojo;
+import com.expenseapp.expenseapp.junitTesting.pojo.UserPojo;
 
 public interface UserService {
 	

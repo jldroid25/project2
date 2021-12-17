@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.expenseapp.expenseapp.dao.ReimbRepositoryDao;
 import com.expenseapp.expenseapp.entity.Reimbursement;
 import com.expenseapp.expenseapp.exception.ApplicationException;
-import com.expenseapp.expenseapp.pojo.ReimbursementPojo;
+import com.expenseapp.expenseapp.junitTesting.pojo.ReimbursementPojo;
 
 @Service
 public class ReimbursementServiceImpl implements ReimbursementService {
