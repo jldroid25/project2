@@ -4,12 +4,6 @@ import { ReimbursService } from '../reimburs.service';
 import { Reimbursement } from '../reimbursement.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import { AuthCredService } from '../../user-credentials/auth-cred.service';
-<<<<<<< HEAD
-=======
-import {HttpClient, HttpResponse,  HttpEventType} from '@angular/common/http';
-import { Observable} from 'rxjs';
-
->>>>>>> tulika-frontend
 
 @Component({
   selector: 'app-specific-reimb',
@@ -35,16 +29,6 @@ export class SpecificReimbComponent implements OnInit {
     userId       : this.authCredService.retrieveUserId(),
     rbReceipt    : ""
    }
-<<<<<<< HEAD
-=======
-
-   //Variables for file uploads
-   selectedFiles !: FileList;
-    currentFile !: File;
-    progress = 0;
-    message = '';
-    fileInfos !: Observable<any>;
->>>>>>> tulika-frontend
   
    constructor(private reimbusementService : ReimbursService, 
     private router: Router, 
@@ -53,23 +37,12 @@ export class SpecificReimbComponent implements OnInit {
     private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
-<<<<<<< HEAD
-=======
-     //for file upload
-     this.fileInfos = this.reimbursService.getFiles();
->>>>>>> tulika-frontend
     
      //for the modal input type form value
      this.formValue = this.formbuilder.group({
       reimb_reason  :  [''],
       reimb_amount  :  [''],
-<<<<<<< HEAD
       reimb_receipt :  ['']
-=======
-
-     
-      
->>>>>>> tulika-frontend
     })
     
     // for the file upload progress
@@ -136,6 +109,10 @@ export class SpecificReimbComponent implements OnInit {
     ref?.click();
     this.formValue.reset();
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 93c9fe3 (Pushing tulika's code to main)
   /*
   // Don't delete - We might need to use it
   updateReimbursementDetails(){
