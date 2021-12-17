@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'employee-info', component : EmplInfoComponent, canActivate :[EmployeeGuardGuard]},
   { path: 'reimb-pending-emp', component : ReimbPendingEmplComponent, canActivate : [EmployeeGuardGuard]},
   { path: 'reimb-resolved-emp', component : ReimbResolvedEmplComponent, canActivate : [EmployeeGuardGuard]},
-  { path: 'view-employees', component : ViewEmployeesComponent, canActivate : [ManagerGuard]},
+  { path: 'view-employees', component : ViewEmployeesComponent},
   //If the path is blank redirect user to login page
    {path: '', redirectTo: 'login', pathMatch: 'full'},
 ];

@@ -29,7 +29,7 @@ export class AuthCredService {
       // retrieve user info we store above in storeUser()
       retrieveUser(): UserCred {
         var data: any = sessionStorage.getItem("userData");
-        return JSON.parse(data == null?'': data);
+        return JSON.parse(data == null?'{}': data);
       }
     
       //All Removed your session afterwards
@@ -40,7 +40,10 @@ export class AuthCredService {
       //For Reteiving User_id
       retrieveUserId(){
         var data: any = sessionStorage.getItem("userData");
-        var user: UserCred  = JSON.parse(data == null?'':data);
+        if(!data){
+          return 0;
+        }
+        var user: UserCred  = JSON.parse(data);
         return user.userId;
       }
        //For Reteiving user type or accessLevel

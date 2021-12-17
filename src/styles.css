@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0px;
+  padding: 0px;
+}
+#empPage {
+  color: whitesmoke;
+
+  font-weight: bolder;
+  font-family: "Courier New", Courier, monospace;
+  padding-left: 30%;
+}
+.navbar,
+.container-fluid {
+  background-color: darkgrey;
+}
+
+.table {
+  background-color: salmon;
+  border-style: dashed;
+  border-color: black;
+}
+body {
+  background-color: darkgray;
+}
+tr {
+  color: blanchedalmond;
+  text-align: center;
+  font-weight: bold;
+}
+td {
+  color: whitesmoke;
+  font-weight: bold;
+}
+.btn-success {
+  background-color: black;
+  font-weight: bold;
+}
+.btn-info {
+  background-color: darkslateblue;
+  font-weight: bold;
+  color: bisque;
+}
+.btn-danger {
+  font-weight: bold;
+  color: bisque;
+}
+.modal-content {
+  background-color: darkgray;
+}
