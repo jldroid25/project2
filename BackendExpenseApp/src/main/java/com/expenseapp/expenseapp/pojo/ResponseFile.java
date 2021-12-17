@@ -1,4 +1,4 @@
-package com.expenseapp.expenseapp.junitTesting.pojo;
+package com.expenseapp.expenseapp.pojo;
 
 public class ResponseFile {
     private String name;

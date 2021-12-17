@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import com.expenseapp.expenseapp.dao.UserRepositoryDao;
 import com.expenseapp.expenseapp.entity.User;
 import com.expenseapp.expenseapp.exception.ApplicationException;
-import com.expenseapp.expenseapp.junitTesting.pojo.UserPojo;
+import com.expenseapp.expenseapp.pojo.UserPojo;
 
 @Service
 public class UserServiceImpl  implements UserService{
@@ -32,7 +32,6 @@ public class UserServiceImpl  implements UserService{
 		User newUser = new User(userInfo.getUserId(), userInfo.getFirstname(), userInfo.getLastname(),
 				userInfo.getEmail(), userInfo.getUsername(), userInfo.getPassword(),  
 				userInfo.getAccessLevel(), userInfo.isUserRemoved());
-		
 		// We use the Spring Data Jpa Built-in method saveAndFlush()
 		User returnUser = userRepositoryDao.saveAndFlush(newUser);
 		userInfo.setUserId(returnUser.getUserId());
@@ -65,14 +64,10 @@ public class UserServiceImpl  implements UserService{
 	@Override
 	public UserPojo updateUserService(UserPojo userInfo) throws ApplicationException {
 		logger.info("Entered updateUserService() in service.");
-		System.out.println(userInfo);
 		 User updateUser = new User(userInfo.getUserId(), userInfo.getFirstname(), userInfo.getLastname(),
 				userInfo.getEmail(), userInfo.getUsername(), userInfo.getPassword(),  
 				userInfo.getAccessLevel(), userInfo.isUserRemoved());
-
-		
 		User returnUser = userRepositoryDao.save(updateUser);
-		System.out.println(returnUser);
 		logger.info("Left  updateUserService() in service.");		
 		return userInfo;
 	}
@@ -82,7 +77,6 @@ public class UserServiceImpl  implements UserService{
 		logger.info("Entered deleteUserService() in service.");
 		// We use the Spring Data Jpa Built-in method deleteById() for performing delete
 		this.userRepositoryDao.deleteById(userId);
-		//this.userRepositoryDao.softUserDelete(userId);
 		logger.info("Left  deleteUserService() in service.");
 		return true;
 	}
@@ -102,17 +96,7 @@ public class UserServiceImpl  implements UserService{
 				user.getAccessLevel(), user.isUserRemoved());
 			allUserPojo.add(userPojo);
 		});
-		
-		
 		logger.info("Left  getAllUserService() in service.");		
 		return allUserPojo;
 	}
-
-	/*
-	 * For exitApplication() no implementation required for closing connection here
-	 * as Spring Data will take care of the connections.
-	 */
-	@Override
-	public void exitApplication() {}
-
 }

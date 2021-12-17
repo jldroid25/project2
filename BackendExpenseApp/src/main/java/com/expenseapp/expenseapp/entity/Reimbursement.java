@@ -30,9 +30,7 @@ public class Reimbursement {
 	// However, it is always preferred  to specify  them even if variable & column names in db  match.
 	@Column(name="rb_id")
 	private int reimbId;
-	
-	//@Column(name="rb_date",  columnDefinition="DATE")
-	//@Column(name="rb_date")
+
 	@Column(name="rb_date", columnDefinition = "DATE DEFAULT CURRENT_DATE")
 	private Date reimbDate;
 	
@@ -50,8 +48,6 @@ public class Reimbursement {
 	
 	@Column(name="user_id")
 	private int userId; 
-	
-	//---------  Jamal --> to add image/receipt blob type, & @Column & make all necessary updates below
 
 	// hibernate expects a default constructor for your entity class
 	public Reimbursement() {

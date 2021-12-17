@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.expenseapp.expenseapp.dao.ReimbRepositoryDao;
 import com.expenseapp.expenseapp.entity.Reimbursement;
 import com.expenseapp.expenseapp.exception.ApplicationException;
-import com.expenseapp.expenseapp.junitTesting.pojo.ReimbursementPojo;
+import com.expenseapp.expenseapp.pojo.ReimbursementPojo;
 
 @Service
 public class ReimbursementServiceImpl implements ReimbursementService {
@@ -235,11 +235,6 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 			allReimbPojo.add(reimbPojo);
 		});
 		return allReimbPojo;
-	}
-
-	@Override
-	public void exitApplication() {
-		// TODO Auto-generated method stub
 	}
 
 }

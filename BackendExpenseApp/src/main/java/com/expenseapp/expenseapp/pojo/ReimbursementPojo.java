@@ -1,4 +1,4 @@
-package com.expenseapp.expenseapp.junitTesting.pojo;
+package com.expenseapp.expenseapp.pojo;
 
 import java.util.Date;
 
@@ -10,7 +10,6 @@ public class ReimbursementPojo {
 	private String reimbStatus;
 	boolean reimbRemoved;
 	private int userId; 
-	//Jamal --> to add image/receipt bloob type & make all necessary updates below
 
 	public ReimbursementPojo() {
 		super();

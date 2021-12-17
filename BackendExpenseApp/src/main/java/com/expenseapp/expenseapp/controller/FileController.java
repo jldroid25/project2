@@ -3,8 +3,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.expenseapp.expenseapp.entity.FileDB;
-import com.expenseapp.expenseapp.junitTesting.pojo.ResponseFile;
-import com.expenseapp.expenseapp.junitTesting.pojo.ResponseMessage;
+import com.expenseapp.expenseapp.pojo.ResponseFile;
+import com.expenseapp.expenseapp.pojo.ResponseMessage;
 import com.expenseapp.expenseapp.service.FileStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;

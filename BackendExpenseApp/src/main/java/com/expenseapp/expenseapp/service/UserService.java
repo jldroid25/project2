@@ -3,12 +3,10 @@ package com.expenseapp.expenseapp.service;
 import java.util.List;
 
 import com.expenseapp.expenseapp.exception.ApplicationException;
-import com.expenseapp.expenseapp.junitTesting.pojo.UserPojo;
+import com.expenseapp.expenseapp.pojo.UserPojo;
 
 public interface UserService {
-	
-	// add validation 
-	
+
 	UserPojo addUserService(UserPojo userInfo) throws ApplicationException;
 
 	UserPojo getAUserService(int userId) throws ApplicationException;
@@ -18,7 +16,5 @@ public interface UserService {
 	boolean deleteUserService(int userId) throws ApplicationException;
 
 	List<UserPojo> getAllUserService() throws ApplicationException;
-
-	void exitApplication();
 
 }
