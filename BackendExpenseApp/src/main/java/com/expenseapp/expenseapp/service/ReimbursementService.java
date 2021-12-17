@@ -2,8 +2,6 @@ package com.expenseapp.expenseapp.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.expenseapp.expenseapp.exception.ApplicationException;
 import com.expenseapp.expenseapp.pojo.ReimbursementPojo;
 
@@ -33,9 +31,6 @@ public interface ReimbursementService {
 	List<ReimbursementPojo> getAllResolvedReimbursementService() throws ApplicationException;
 
 	List<ReimbursementPojo> getAllPendingReimbursementService() throws ApplicationException;
-	
-
-	void exitApplication();
 	
 
 }
