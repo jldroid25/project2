@@ -120,16 +120,8 @@ export class SpecificReimbComponent implements OnInit {
     //add more fields later if needed
     this.newReimbursement.reimbReason = this.formValue.value.reimb_reason;
     this.newReimbursement.reimbAmount = this.formValue.value.reimb_amount;
-<<<<<<< HEAD
    // this.newReimbursement.reimbAmount = this.formValue.value.reimb_receipt;
      // Let's post the data through the post request in service
-=======
-    
-    //for sending image to backend
-    //this.onUpload()
-    
-    // Let's post the data through the post request in service
->>>>>>> tulika-frontend
     this.reimbusementService.addReimbursementService(this.newReimbursement).subscribe(
       (response: any) => {
         // To reload the page with new user Reimbursement just added
@@ -144,72 +136,6 @@ export class SpecificReimbComponent implements OnInit {
     ref?.click();
     this.formValue.reset();
   }
-<<<<<<< HEAD
-
-=======
-
-  //----- File Upload ---------------//
-
-  /*
-  selectedFile : any = null;
-  //Method to select the file
-  onFileSelected(event : any){
-    this.selectedFile = <any>event.target.files[0];
-  }
-  
-  ------------Not bad------------ 
-
-   //Method to upload the file
-  onUpload(){
-    const fd = new FormData();
-    fd.append("image", this.selectedFile, this.selectedFile.name);
-    this.http.post("http://localhost:7777/api/reimbursements", this.selectedFile)
-   
-    .subscribe(res => {
-      console.log("James Testing --->");
-      console.log(res);
-    })
-    */
-
-    // -------File upload option 2--
-
-    //Method to helps us to get the selected Files
-    selectedFile(event : any) {
-      this.selectedFiles = event.target.files;
-    }
-
-    //Method for uploading the File
-    upload() {
-      this.progress = 0;
-    
-      this.currentFile = this.selectedFiles.item(0) as any ;
-      this.reimbursService.upload(this.currentFile).subscribe(
-        event => {
-          if (event.type === HttpEventType.UploadProgress) {
-            if(event.total) {
-              const total : number = event.total;
-              this.progress = Math.round(100 * event.loaded / event.total);
-            } else {
-              console.log("Error, Progress data not available")
-            }
-          } else if (event instanceof HttpResponse) {
-            this.message = event.body.message;
-            this.fileInfos = this.reimbursService.getFiles();
-          }
-        },
-        err => {
-          this.progress = 0;
-          this.message = 'Could not upload the file!';
-          //this.currentFile = undefined;
-        });
-    
-      //this.selectedFiles = undefined;
-    }
-
-    
- 
-
->>>>>>> tulika-frontend
   /*
   // Don't delete - We might need to use it
   updateReimbursementDetails(){
@@ -226,8 +152,4 @@ export class SpecificReimbComponent implements OnInit {
   })
   }
   */
-<<<<<<< HEAD
 }//class
-=======
-}//class
->>>>>>> tulika-frontend
