@@ -18,7 +18,7 @@ public class LoggingAspect {
 private static final Logger LOGGER = LogManager.getLogger(LoggingAspect.class);
     
   
-    @Around("execution(* com.expenseapp.expenseapp.pojo..*(..)))")
+    @Around("execution(* com.expenseapp.expenseapp.service..*(..)))")
     public Object logMethodExecutionTime(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         MethodSignature methodSignature = (MethodSignature) proceedingJoinPoint.getSignature();
 
