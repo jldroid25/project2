@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './user-credentials/login/login.component';
@@ -21,10 +20,9 @@ import { ViewEmployeesComponent } from './manager/view-employees/view-employees.
 import { Header1Component } from './header/header1/header1.component';
 import { Header2Component } from './header/header2/header2.component';
 import { FooterComponent } from './footer/footer/footer.component';
-// Material Design -Angular
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+
  
 @NgModule({
   declarations: [
@@ -44,7 +42,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ViewEmployeesComponent,
     Header1Component,
     Header2Component,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,11 +50,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MDBBootstrapModule.forRoot(),
-    BrowserAnimationsModule,
-
+    FormsModule,
+   
   ],
-  schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
   bootstrap: [AppComponent]
 })
