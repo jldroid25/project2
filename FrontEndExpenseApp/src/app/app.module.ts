@@ -21,7 +21,11 @@ import { ViewEmployeesComponent } from './manager/view-employees/view-employees.
 import { Header1Component } from './header/header1/header1.component';
 import { Header2Component } from './header/header2/header2.component';
 import { FooterComponent } from './footer/footer/footer.component';
-  
+// Material Design -Angular
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,9 +51,12 @@ import { FooterComponent } from './footer/footer/footer.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MDBBootstrapModule.forRoot(),
+    BrowserAnimationsModule,
+
   ],
-  
+  schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
   bootstrap: [AppComponent]
 })
