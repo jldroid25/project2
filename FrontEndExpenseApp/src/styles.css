@@ -43,7 +43,7 @@ body {
 }
 
 body {
-  background-color: darkgray;
+  background-color: white;
 }
 tr {
   color: blanchedalmond;
@@ -70,3 +70,22 @@ td {
 .modal-content {
   background-color: darkgray;
 }
+
+.scroll {
+  background-color: #fed9ff;
+   width: 600px;
+   height: 150px;
+   overflow-x: hidden;
+   overflow-y: auto;
+   text-align: center;
+   padding: 20px;
+ }
+  
+ .my-card-content {
+  padding: 16px;
+  background-color: aquamarine;
+ }
+ 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
