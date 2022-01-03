@@ -1,0 +1,77 @@
+<!-- Create the navigation bars, buttons here -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <a class="navbar-brand mx-3" href="http://localhost:4200/employee-info">Employee Info</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="http://localhost:4200/employee-dashboard">Employee DashBoard</a>
+    </div>
+  </div>
+  <button routerLink="/login" class="btn btn-danger mx-3">Logout</button>
+</nav>
+
+<nav class="navbar  navbar-dark btn-primary">
+  <div class="container-fluid">
+    <h1 id="empPage">Employee Info Page</h1>
+  </div>
+</nav>
+
+<!-- Create the table-->
+<table class="table mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Employee Id </th>
+      <th scope="col">First Name </th>
+      <th scope="col">Last Name </th>
+      <th scope="col">Email </th>
+      <th scope="col">Access Level</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{employeeModelObj.userId}}</td>
+      <td>{{employeeModelObj.firstname}}</td>
+      <td>{{employeeModelObj.lastname}}</td>
+      <td>{{employeeModelObj.email}}</td>
+      <td>{{employeeModelObj.accessLevel}}</td>
+      <td>
+        <button (click)="onEdit(employeeModelObj)" type="button" class="btn btn-success" data-bs-toggle="modal"
+          data-bs-target="#exampleModal" class="btn btn-info">Update Info</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal to add Employee data -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <!-- Employee's Form For password change-->
+        <form [formGroup]="formValue">
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="text" formControlName="password" class="form-control" id="InputPassword">
+          </div>
+
+        </form>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" (click)="updateEmployeeDetails()" class="btn btn-primary">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
