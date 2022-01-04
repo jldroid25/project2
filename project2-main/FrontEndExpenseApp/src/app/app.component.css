@@ -1,0 +1,16 @@
+.placeholder {
+  /* display: flex; */
+  flex-flow: column;
+  height: calc(100vh - 60px);
+}
+.inner-placeholder {
+  flex: 1;
+}
+app-footer {
+  flex: auto;
+}
+app-navbar {
+  position: fixed;
+  top: 0px;
+  height: 60px;
+}

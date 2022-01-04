@@ -1,0 +1,85 @@
+<div class="slider">
+    
+</div>
+<!-- Login form-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h4>Sign Up</h4>
+                </div>
+                <form>
+                    <!-- data binding signupForm values to the formGroup-->
+                    <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+                        <div class="mb-3">
+                            <div class="mb-3">
+                                <label for="exampleInputFirstname1" class="form-label">First Name</label>
+                                <input formControlName="firstname" type="text" class="form-control"
+                                    id="exampleInputFirstname" placeholder="firstname">
+                                <span class="text-danger"
+                                    *ngIf="signupForm.controls['firstname'].dirty &&  signupForm.hasError('required', 'firstname')">Firstname
+                                    is Required</span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleInputLastname1" class="form-label">Last Name</label>
+                                <input formControlName="lastname" type="text" class="form-control"
+                                    id="exampleInputlastname1" placeholder="lastname">
+
+                                <span class="text-danger"
+                                    *ngIf="signupForm.controls['lastname'].dirty &&  signupForm.hasError('required', 'lastname')">Last
+                                    Name is Required</span>
+                            </div>
+
+                            <label for="exampleInputEmail1" class="form-label">Email Address</label>
+                            <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="email">
+
+                            <span class="text-danger"
+                                *ngIf="signupForm.controls['email'].dirty &&  signupForm.hasError('required', 'email')">Email
+                                is Required</span>
+
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleInputUsername1" class="form-label">Username</label>
+                            <input formControlName="username" type="text" class="form-control"
+                                id="exampleInputUsername1" placeholder="username">
+                            <span class="text-danger"
+                                *ngIf="signupForm.controls['username'].dirty &&  signupForm.hasError('required', 'username')">
+                                Username is Required - 6 characters minimum </span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input formControlName="password" type="password" class="form-control"
+                                id="exampleInputPassword1" placeholder="password">
+                            <span class="text-danger"
+                                *ngIf="signupForm.controls['password'].dirty &&  signupForm.hasError('required', 'password')">Password
+                                is Required - 8 characters minimum</span>
+                        </div>
+
+                        <div class="mb-3">
+                            
+                            <label for="exampleInputAccessLevel1" class="form-label">Account Type</label>
+                            <select formControlName="accessLevel" type="accessLevel" class="form-control"
+                            id="exampleInputAccessLevel1" >
+                                <option>employee</option>
+                                <option>manager</option>
+                            </select>
+                           
+                            <span class="text-danger"*ngIf="signupForm.controls['accessLevel'].dirty &&  signupForm.hasError('required', 'accessLevel')">Account
+                                Type is Required</span>
+                        </div>
+
+                        <button type="submit" [disabled]="!signupForm.valid" class="btn btn-primary">Signup</button>
+                    </form>
+                    <a id="RegLogin" routerLink="/login"><p>Already Registed? Click to Login !</p> </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

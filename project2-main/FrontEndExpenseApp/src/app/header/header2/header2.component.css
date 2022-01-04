@@ -1,0 +1,11 @@
+.navbar-outline {
+  border-top: 2px solid #eaeaea;
+}
+.navbar-brand {
+  font-family: "Markazi Text", serif;
+  font-size: 14px;
+  /* font-weight: 900; */
+  letter-spacing: 7px;
+  line-height: 20px;
+  text-transform: uppercase;
+}
