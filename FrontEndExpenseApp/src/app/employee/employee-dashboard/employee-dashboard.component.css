@@ -1,90 +1,14 @@
-..nav-item{
+.nav-item{
     font-weight: bold;
- }
- .grid-container1 {
+}
+.grid-container1 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
- }
-  
- .grid-container2 {
+}
+
+.grid-container2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
- }
- .scroll {
- background-color: #fed9ff;
-  width: 600px;
-  height: 150px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  text-align: center;
-  padding: 20px;
- }
- .left-Text-Msg{
-    text-align: center;
-    font-weight : bolder;
-    float: left;
-    width: 400px;
-    height: 30%;
-    top: 40%;
-    padding: 10%;
-    margin-left: 25px;
- }
- .bold-h1-text{
-    font-family: roboto sans-serif;
-    text-align: center;
-    font-size: xx-large;
- }
- .imgDivSize{
-    float: right;
-    width: 50%;
-    height: 40%;
-    padding-right: 25px;
-    margin-left: 35px;
- }
- .imgDivSize{
-    width: 760px;
-    height: 400px;
- }
- #mid-div-img{
-    float: left;
-    width: 40px;
-    height: 400px;
- }
- #sailingImg{
-    margin-left: 20px;
-    width: 650px;
-    height: 480px;
- }
- #left-mid-page-div{
-    float : right;
-    margin-left: 50%;
-    text-align: center;
-    font-size: xx-large;
-    font-family: Roboto sans-serif;
-  
- }
- #left-mid-page-div , p {
-    font-size: medium;
-    text-align: center;
-    font-family: Roboto sans-serif;
-   
- }
-  
- #emp-div-1{
-    float : left;
-    margin-left: 20%;
-    text-align: center;
-    font-size: medium;
-    font-family: Roboto sans-serif;
- }
-  
- #emp-div-2{
-    float : right;
-    margin-left: 80px;
-    text-align: center;
-    font-size: medium;
-    font-family: Roboto sans-serif;
- }
- 
+}

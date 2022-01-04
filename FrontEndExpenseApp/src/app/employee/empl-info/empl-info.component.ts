@@ -63,7 +63,6 @@ export class EmplInfoComponent implements OnInit {
     this.employeeModelObj.username = this.formValue.value.username;
     this.employeeModelObj.lastname = this.formValue.value.lastname;
     this.employeeModelObj.email = this.formValue.value.email;
-    this.employeeModelObj.password = this.formValue.value.password;
     this.employeeModelObj.accessLevel = this.formValue.value.accessLevel;
 
     //call our update api method , pass it the object &  eemployee id

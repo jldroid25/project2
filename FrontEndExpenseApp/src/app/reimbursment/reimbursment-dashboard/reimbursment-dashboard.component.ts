@@ -23,9 +23,8 @@ export class ReimbursmentDashboardComponent implements OnInit {
    reimbDate    : "",
    reimbReason  : " ",
    reimbAmount  : 0,
-   reimbStatus  : "Pending",
+   reimbStatus  : " ",
    reimbRemoved : false,
-   rbReceipt  : "" ,
    userId       : 0
   }
 

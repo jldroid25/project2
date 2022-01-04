@@ -22,7 +22,6 @@ export class PendingReimbComponent implements OnInit {
    reimbAmount  : 0,
    reimbStatus  : " ",
    reimbRemoved : false,
-   rbReceipt  : "",
    userId       : this.authCredService.retrieveUserId()
   }
 
