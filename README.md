@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Project Two  Description
 
 * This small project is based on employees submitting reimbursements through a company website, and managers approving or denying those reimbursements.
-*Project Two is a continuation of Project One where backend  was converted to Spring Boot Project. 
+* Project Two is a continuation of Project One where backend  was converted to Spring Boot Project. 
 * In Project The major changes were in the Frontend design in order  to transform the site into a Corporation looking website. 
 
 ## Technologies Used
