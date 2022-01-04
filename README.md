@@ -32,6 +32,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   * Managers can choose an employee in the Employee-List section, and it will list all reimbursement tied to that employee
   * Home menu display's the user's username (Only displays name, will implement more designs)
   * Reimbursements, employees, managers are all stored in the database, PostgreSQL
+  * Employees can upload reimbursement  image receipts  when adding expense
   
 ## To-do List
   * Add design templates to the website for each section
@@ -39,7 +40,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   * Convert backend code to SpringBoot
   * Logout function
   * Add test cases to frontend
-  * Improve Frontend Design from 
+  * Improve Frontend Design from Project One
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
