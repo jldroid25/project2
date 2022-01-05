@@ -64,14 +64,10 @@ export class SpecificReimbComponent implements OnInit {
       reimb_status  :  [''] 
     })
     
-    // for the file upload progress
-    //this.fileInfos = this.uploadService.getFiles(); 
-
     //For getting the userId & send it to the reimb_info table user_id column
     this.loadThisUSerReimbersements(this.authCredService.retrieveUserId());
 
   }
-
 
   //access a function  retrieve Reimmb
   loadThisUSerReimbersements(userId : number){
@@ -98,7 +94,6 @@ export class SpecificReimbComponent implements OnInit {
    
   }
   
-
     //Method to set the new values on to the modal table rows
   onEditRow(row : any){
    this.newReimbursement.reimbId = row.reimbId;
