@@ -1,28 +1,21 @@
 package com.expenseapp.expenseapp.pojo;
 
-import lombok.*;
-
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString
-@EqualsAndHashCode
+
 public class ReimbursementPojo {
 	private int reimbId;
-	@NotNull
 	private Date reimbDate;
-	@NotNull
 	private String reimbReason;
-	@Min(0)
 	private float reimbAmount;
-	@NotNull
 	private String reimbStatus;
 	boolean reimbRemoved;
 	private int userId; 
 
+	public ReimbursementPojo() {
+		super();
+	}
+
+	
 	public ReimbursementPojo(int reimbId, Date reimbDate, String reimbReason, float reimbAmount, String reimbStatus,
 			boolean reimbRemoved, int userId) {
 		super();
@@ -35,4 +28,68 @@ public class ReimbursementPojo {
 		this.userId = userId;
 	}
 
+	public int getReimbId() {
+		return reimbId;
+	}
+
+	public void setReimbId(int reimbId) {
+		this.reimbId = reimbId;
+	}
+
+	public Date getReimbDate() {
+		return reimbDate;
+	}
+
+	public void setReimbDate(Date reimbDate) {
+		this.reimbDate = reimbDate;
+	}
+
+	public String getReimbReason() {
+		return reimbReason;
+	}
+
+	public void setReimbReason(String reimbReason) {
+		this.reimbReason = reimbReason;
+	}
+
+	public float getReimbAmount() {
+		return reimbAmount;
+	}
+
+	public void setReimbAmount(float reimbAmount) {
+		this.reimbAmount = reimbAmount;
+	}
+
+	public String getReimbStatus() {
+		return reimbStatus;
+	}
+
+	public void setReimbStatus(String reimbStatus) {
+		this.reimbStatus = reimbStatus;
+	}
+
+	public boolean isReimbRemoved() {
+		return reimbRemoved;
+	}
+
+	public void setReimbRemoved(boolean reimbRemoved) {
+		this.reimbRemoved = reimbRemoved;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	
+	@Override
+	public String toString() {
+		return "ReimbursementPojo [reimbId=" + reimbId + ", reimbDate=" + reimbDate + ", reimbReason=" + reimbReason
+				+ ", reimbAmount=" + reimbAmount + ", reimbStatus=" + reimbStatus + ", reimbRemoved=" + reimbRemoved
+				+ ", userId=" + userId + "]";
+	}
+	
 }

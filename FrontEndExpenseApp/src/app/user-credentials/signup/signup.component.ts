@@ -21,11 +21,11 @@ export class SignupComponent implements OnInit {
     //Initialize the form
     this.signupForm = this.formBuilder.group({
       firstname: ['', Validators.required],
-      lastname: ['',  Validators.required],
-      email: ['',    [Validators.required, Validators.email]],
-      username: ['', [Validators.required, Validators.minLength(6)]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      accessLevel: ['', Validators.required]
+      lastname: ['', Validators.required],
+      email: ['', Validators.required, Validators.email],
+      username: ['', Validators.required,Validators.minLength(6)],
+      password: ['', Validators.required, Validators.minLength(8)],
+      accessLevel: ['', Validators.required],
     })
   }
   //the signUp method

@@ -35,4 +35,14 @@ user_site_data(user_id) on delete cascade on update cascade;
  # Add the Foreign key to files table for Reimb_info table
  alter table files add column rb_id int,
  add constraint fk_reimb_info foreign key(rb_id)
- references reimb_info(rb_id) on delete cascade on update cascade;
+ references reimb_info(rb_id)
+ on delete cascade on update cascade;
+
+
+# ---------- Inject some data 
+insert into reimb_info(user_id, rb_reason,rb_amount, rb_status, reimb_removed )
+values(1, 'Cell phone bill', 137.08, 'Approved',false );
+insert into reimb_info(user_id, rb_reason,rb_amount, rb_status, reimb_removed )
+values(1, 'Meal on Meat', 13.32, 'Denied',false );
+insert into reimb_info(user_id, rb_reason,rb_amount, rb_status, reimb_removed )
+values(1, 'Hotel Barl', 137.08, 'Pending',false );

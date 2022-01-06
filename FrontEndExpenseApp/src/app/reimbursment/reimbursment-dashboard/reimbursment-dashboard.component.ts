@@ -23,9 +23,8 @@ export class ReimbursmentDashboardComponent implements OnInit {
    reimbDate    : "",
    reimbReason  : " ",
    reimbAmount  : 0,
-   reimbStatus  : "Pending",
+   reimbStatus  : " ",
    reimbRemoved : false,
-   rbReceipt  : "" ,
    userId       : 0
   }
 
@@ -37,7 +36,7 @@ export class ReimbursmentDashboardComponent implements OnInit {
     
     //for the modal input type form value
     this.formValue = this.formbuilder.group({
-      reimb_status : ['Pending']
+      reimb_status : ['']
     })
     
     //TO load all reimbursement on page load
@@ -50,7 +49,7 @@ export class ReimbursmentDashboardComponent implements OnInit {
         this.allReimbursements = response;
       }, 
       (error)=> {
-        this.errorReimbMsg = "Unable to retrieve all Reveimbursemnets - try later";
+        this.errorReimbMsg = "Unable to retrieve all Reveimbursemnets - Retry later";
         console.log(this.errorReimbMsg);
       });
   }
@@ -106,9 +105,7 @@ export class ReimbursmentDashboardComponent implements OnInit {
     this.reimbusementService.updateReimbursementService(this.newReimbursement)
     .subscribe(
       (response) => {
-        //for testing remove later 
         console.log(response);
-        
         //To Reload the page after the update is done
         this.router.navigate(['reimb-dashboard']);
       alert("updated Successfully");
