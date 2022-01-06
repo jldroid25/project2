@@ -33,10 +33,6 @@ export class EmplInfoComponent implements OnInit {
     */
     this.employeeModelObj = this.authCredService.retrieveUser();
 
-    //For Testing Remove Later
-    console.log("Checking the emp obj -->");
-    console.log(this.employeeModelObj);
-
     this.formValue = this.formbuilder.group({
       username    :  [''],
       password    :  [''],
@@ -49,7 +45,6 @@ export class EmplInfoComponent implements OnInit {
 
   //------------ Update API Call to fetch data from Db------//
   //Method to set the new values on to the modal table rows
-  //Remove the "any" datatype for Project-1 codes
   onEdit(row: any) {
     /* */
     this.employeeModelObj.userId = row.userId;
@@ -63,6 +58,7 @@ export class EmplInfoComponent implements OnInit {
     this.employeeModelObj.username = this.formValue.value.username;
     this.employeeModelObj.lastname = this.formValue.value.lastname;
     this.employeeModelObj.email = this.formValue.value.email;
+    this.employeeModelObj.password = this.formValue.value.password;
     this.employeeModelObj.accessLevel = this.formValue.value.accessLevel;
 
     //call our update api method , pass it the object &  eemployee id

@@ -1,3 +1,5 @@
+<div class="Scroll">  <!-- Page Scroll-->
+  
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
   <a class="navbar-brand mx-3" href="http://localhost:4200/reimb-dashboard">Reimbursements Home</a>
@@ -20,20 +22,23 @@
     <div class="container-fluid">
         <h1 id="empPage"> All Reimbursements Requests </h1>
     </div>
+
 </nav>
 <!-- Create the table-->
 <table class="table mt-3">
     <thead>
         <tr>
             <th scope="col">Expense Id </th>
+            <!-- 
             <th scope="col">Expense Date</th>
+            -->
             <th scope="col">Expense Reason </th>
             <th scope="col">Amount</th>
             <th scope="col">Status </th>
             <th scope="col">User Id </th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="table-body">
       <!--- We need to loop "*ngFor"  in <tr> get all reimbursementData - 
         for the get method  Api call-->
         <tr *ngFor="let row of allReimbursements">
@@ -70,6 +75,7 @@
                   <!-- FYI NgModel on Reactive form is deprecated-->
                   <select type="reimb_status" formControlName="reimb_status"[(ngModel)]="newReimbursement.reimbStatus" class="form-control"> 
                   <option>Approved</option>
+                  <option>Denied</option>
           
                 </select>
               </div>
@@ -82,3 +88,6 @@
     </div>
   </div>
 </div>
+
+</div><!-- Scroll-->
+<br><br><br><br>
